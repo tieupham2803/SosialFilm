@@ -1,0 +1,23 @@
+{
+  "name": "SosialFilm",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Anh Tu <doananhtu13395@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/doananhtu/SosialFilm",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "https://github.com/twbs/bootstrap.git#^4.1.3"
+  },
+  "devDependencies": {
+    "lato-font": "^3.0.0"
+  }
+}
