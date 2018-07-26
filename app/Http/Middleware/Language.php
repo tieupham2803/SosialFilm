@@ -19,7 +19,7 @@ class Language
         } else {
             App::setLocale(Config::get('app.fallback_locale'));
         }
-        
+
         return $next($request);
     }
 }
