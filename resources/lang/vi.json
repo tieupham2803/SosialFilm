@@ -1,0 +1,19 @@
+{
+    "Register": "Đăng ký",
+    "Login": "Đăng nhập",
+    "Logout": "Đăng xuất",
+    "A new role has been created": "Tạo thành công role mới",
+    "The user has been updated": "Cập nhật người dùng thành công",
+    "You are logged in": "Đăng nhập thành công!",
+    "Dashboard": "Trang tổng quan",
+    "Reset Password": "Đặt lại mật khẩu",
+    "Edit user": "Chỉnh sửa thông tin người dùng",
+    "Name": "Tên",
+    "Email": "Địa chỉ thư",
+    "Role": "Vai trò",
+    "Password": "Mật khẩu",
+    "Confirm password": "Xác nhận mật khẩu",
+    "Cancel": "Huỷ",
+    "Submit": "Xác nhận",
+    "Send Password Reset Link": "Gửi yêu cầu đặt lại mật khẩu"
+}
