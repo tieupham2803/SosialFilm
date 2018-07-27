@@ -21,6 +21,11 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function welcome()
+    {
+        return view('pages.home');
+    }
+
     public function changeLanguage($language)
     {
         if (array_key_exists($language, Config::get('languages'))) {

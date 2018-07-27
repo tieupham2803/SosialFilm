@@ -15,5 +15,11 @@
     "Confirm password": "Xác nhận mật khẩu",
     "Cancel": "Huỷ",
     "Submit": "Xác nhận",
-    "Send Password Reset Link": "Gửi yêu cầu đặt lại mật khẩu"
+    "Send Password Reset Link": "Gửi yêu cầu đặt lại mật khẩu",
+    "Your review has been created": "Bài viết của bạn đã được tạo!",
+    "The review has been updated": "Bài viết của bạn đã được cập nhật!",
+    "The review has been deleted": "Bài viết của bạn đã được xóa!",
+    "Submit Review": "Gửi bài viết",
+    "Create a": "Tạo",
+    "Edit a": "Sửa"
 }
