@@ -31,24 +31,6 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="metric">
-                            <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-                            <p>
-                                <span class="number">{{ $ticketCount }}</span>
-                                <span class="title">Vé đã bán</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="metric">
-                            <span class="icon"><i class="fas fa-chart-area"></i></span>
-                            <p>
-                                <span class="number">{{ $seatCount }}</span>
-                                <span class="title">Ghế đã đặt</span>
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -39,7 +39,7 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="dropdown">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="lnr lnr-question-circle"></i>
                         <span>Help</span>
@@ -59,7 +59,7 @@
                             <a href="#">Troubleshooting</a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
                 <li class="dropdown">
                     {{-- @if (isset($userLogin)) --}}
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
