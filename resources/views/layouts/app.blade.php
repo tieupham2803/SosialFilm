@@ -25,5 +25,14 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/functions.js') }}"></script>
+    <script type="text/javascript">
+        function xacnhanxoa(msg){
+            if(window.confirm(msg)){
+                return true;
+            }
+            return  false;
+        }
+
+</script>
 </body>
 </html>

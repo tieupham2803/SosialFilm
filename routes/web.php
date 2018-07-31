@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('pages.landing-page');
 });
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -34,4 +33,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'mana
     Route::get('users/{id?}/edit', 'UsersController@edit');
     Route::post('users/{id?}/edit', 'UsersController@update');
     Route::get('/', 'PagesController@home');
+    Route::resource('genres', 'GenreController')->except(['show']);
+
 });
+
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
+
