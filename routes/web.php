@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.landing-page');
-});
+Route::get('/', 'HomeController@welcome');
+
+Route::resources([
+    'reviews' => 'ReviewsController',
+]);
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::group(['middleware' => 'locale'], function () {
     Route::get('change-language/{language}', 'HomeController@changeLanguage')
@@ -34,8 +35,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'mana
     Route::post('users/{id?}/edit', 'UsersController@update');
     Route::get('/', 'PagesController@home');
     Route::resource('genres', 'GenreController')->except(['show']);
-
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
-

@@ -29,5 +29,7 @@ return [
     */
 
     'compiled' => realpath(storage_path('framework/views')),
+    'pagination' => 'pagination::slider-3',
+    'pagination-num-item-in-page' => 5,
 
 ];
