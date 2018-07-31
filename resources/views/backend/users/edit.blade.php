@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('backend.layouts.main')
 @section('content')
     <div class="container col-md-6 col-md-offset-3">
         <div class="well well bs-component">

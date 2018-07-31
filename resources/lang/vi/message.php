@@ -13,4 +13,7 @@ return [
     'name' => "Tên",
     'action' => 'Thao tác',
     'stt' => 'Số thứ tự',
+    'manager' => 'Trang quản trị | Mrso',
+    'homepage' => 'Trang Chủ',
+    'review' => 'Reviews',
 ];
