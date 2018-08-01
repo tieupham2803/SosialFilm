@@ -26,7 +26,7 @@ Route::group(['middleware' => 'locale'], function () {
         ->name('user.change-language');
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('users', [ 'as' => 'admin.user.index', 'uses' => 'UsersController@index']);
     Route::get('roles', 'RolesController@index');
     Route::get('roles/create', 'RolesController@create');

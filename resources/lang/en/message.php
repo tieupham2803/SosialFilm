@@ -13,4 +13,7 @@ return [
     'name' => "name",
     'action' => 'action',
     'stt' => 'namber order',
+    'manager' => 'Manager page | Mrso',
+    'homepage' => 'Homepage',
+    'review' => 'Reviews',
 ];
