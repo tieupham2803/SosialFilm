@@ -13,9 +13,12 @@
 
 Route::get('/', 'HomeController@welcome');
 
-Route::resources([
-    'reviews' => 'ReviewsController',
-]);
+Route::group(['middleware' => 'auth'], function () {
+    Route::resources([
+        'reviews' => 'ReviewsController',
+        'profile' => 'ProfileController',
+    ]);
+});
 
 Auth::routes();
 
@@ -27,7 +30,7 @@ Route::group(['middleware' => 'locale'], function () {
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::get('users', [ 'as' => 'admin.user.index', 'uses' => 'UsersController@index']);
+    Route::get('users', ['as' => 'admin.user.index', 'uses' => 'UsersController@index']);
     Route::get('roles', 'RolesController@index');
     Route::get('roles/create', 'RolesController@create');
     Route::post('roles/create', 'RolesController@store');

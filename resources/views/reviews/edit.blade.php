@@ -26,20 +26,20 @@
                             {!! csrf_field() !!}
 
                             <div class="col_one_third">
-                                {!! Form::label('Title') !!}
-                                {!! Form::text('title', $review->title, array('class' => 'sm-form-control')) !!}
+                                {!! Form::label(__('Title')) !!}
+                                {!! Form::text('title', $review->title, ['class' => 'sm-form-control']) !!}
                             </div>
                             <div class="col_one_third">
-                                {!! Form::label('Movie') !!}
-                                {!! Form::select('movie_id', ['1' => 'Mission: Impossible', '2' => 'Avenger', '3' => 'Avenger2'], $review->movie_id, array('class' => 'select2 sm-form-control fix-select', 'placeholder' => 'Choose a film...')) !!}
+                                {!! Form::label(__('Movie')) !!}
+                                {!! Form::select('movie_id', ['1' => 'Mission: Impossible', '2' => 'Avenger', '3' => 'Avenger2'], $review->movie_id, ['class' => 'select2 sm-form-control fix-select', 'placeholder' => 'Choose a film...']) !!}
                             </div>
                             <div class="clear"></div>
                             <div class="col_full">
-                                {!! Form::label('Content') !!}
-                                {!! Form::textarea('content', $review->content, array('class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'ckeditor')) !!}
+                                {!! Form::label(__('Content')) !!}
+                                {!! Form::textarea('content', $review->content, ['class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'ckeditor']) !!}
                             </div>
                             <div class="col_full nobottommargin">
-                                {!! Form::submit(__('Submit Review'), array('class' => 'button button-3d nomargin')) !!}
+                                {!! Form::submit(__('Submit Review'), ['class' => 'button button-3d nomargin']) !!}
                             </div>
                             {!! Form::close() !!}
                         </div>
