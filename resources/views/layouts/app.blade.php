@@ -33,8 +33,16 @@
             $('.select2').select2();
         });
     </script>
-    <script type="text/javascript">
-        CKEDITOR.replace('ckeditor');
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+        };
+    </script>
+    <script>
+        CKEDITOR.replace('my-editor', options);
     </script>
 </body>
 </html>

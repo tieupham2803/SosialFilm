@@ -34,7 +34,7 @@
                                 <div class="clear"></div>
                                 <div class="col_full">
                                     {!! Form::label('Content') !!}
-                                    {!! Form::textarea('content', null, array('class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'ckeditor')) !!}
+                                    {!! Form::textarea('content', null, array('class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'my-editor')) !!}
                                 </div>
                                 <div class="col_full nobottommargin">
                                     {!! Form::submit(__('Submit Review'), array('class' => 'button button-3d nomargin')) !!}
