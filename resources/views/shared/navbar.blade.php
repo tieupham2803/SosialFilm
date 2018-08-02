@@ -1,4 +1,4 @@
-<header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
+<header id="header" class="full-header" data-sticky-class="not-dark">
     <div id="header-wrap">
         <div class="container clearfix">
             <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
@@ -10,7 +10,7 @@
                             src="{{ asset('images/logo%402x.png') }}" alt="Canvas Logo"></a>
             </div>
 
-            <nav id="primary-menu" class="dark">
+            <nav id="primary-menu">
                 <ul>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -39,6 +39,17 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <ul>
+                                @role('manager')
+                                <li>
+                                    <a href="{{ url('/admin') }}" class="dropdown-item" target="_blank">{{ __('Admin Dashboard') }}</a>
+                                </li>
+                                @endrole
+                                <li>
+                                    <a href="{{ route('reviews.index') }}">{{ __('My Reviews') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('profile.edit', Auth::user()->id) }}" class="dropdown-item">{{ __('Profile') }}</a>
+                                </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -55,7 +66,7 @@
 
 
                 <div id="top-cart">
-                    <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
+                    <a href="#" id="top-cart-trigger"><i class="fas fa-bell"></i><span>5</span></a>
                     <div class="top-cart-content">
                         <div class="top-cart-title">
                             <h4>Shopping Cart</h4>
