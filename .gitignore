@@ -15,4 +15,5 @@ yarn-error.log
 /public/bower_components
 /storage/debugbar/
 /public/images/actors
-
+/public/photos
+/public/vendor
