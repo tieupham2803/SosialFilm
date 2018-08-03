@@ -14,3 +14,5 @@ yarn-error.log
 .editorconfig
 /public/bower_components
 /storage/debugbar/
+/public/images/actors
+

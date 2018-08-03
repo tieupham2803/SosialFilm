@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::post('users/{id?}/edit', 'UsersController@update');
     Route::get('/', 'PagesController@home');
     Route::resource('genres', 'GenreController')->except(['show']);
+    Route::resource('actors', 'ActorController')->except(['show']);
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
