@@ -29,4 +29,14 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
 }

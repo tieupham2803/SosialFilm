@@ -24,7 +24,7 @@
                                 <li><a href="#"><i class="icon-user"></i> {{ $username }}</a></li>
                                 <li><i class="fa fa-film"></i> <a href="#">{{ $movie->title }}</a></li>
                                 <li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>
-                                <li><a href="#"><i class="icon-like"></i> 100 Likes</a></li>
+                                <li><a href="#"><i class="icon-like"></i> {{ $like }} Likes</a></li>
                             </ul>
                             <div class="entry-image">
                                 <a href="#"><img src="{{ asset($movie->poster) }}" alt="Blog Single"></a>
@@ -33,15 +33,19 @@
                             <div class="entry-content notopmargin">
                                 <p>{!! $review->content !!}</p>
 
-
-                                <div class="tagcloud clearfix bottommargin">
-                                    <a href="#">general</a>
-                                    <a href="#">information</a>
-                                    <a href="#">media</a>
-                                    <a href="#">press</a>
-                                    <a href="#">gallery</a>
-                                    <a href="#">illustration</a>
+                                @if (empty($like_user))
+                                <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
+                                    <a href="{{ route('like', ['id' => $review->id]) }}">
+                                        <span class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
+                                    </a>
                                 </div>
+                                @else
+                                <div class=" clearfix bottommargin btn btn-outline-danger  " id = "like-btn">
+                                    <a href="{{ route('like', ['id' => $review->id]) }}">
+                                        <span class="fa fa-thumbs-down">{{ trans('message.unlike') }}</span>
+                                    </a>
+                                </div>
+                                @endif
                                 <div class="clear"></div>
 
                                 <div class="si-share noborder clearfix">

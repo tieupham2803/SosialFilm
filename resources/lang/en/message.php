@@ -17,5 +17,8 @@ return [
     'manager' => 'Manager page | Mrso',
     'homepage' => 'Homepage',
     'review' => 'Reviews',
-    'selectmovie' => 'Movie'
+    'selectmovie' => 'Movie',
+    'unlike' => 'Unlike',
+    'like' => 'Like',
+
 ];
