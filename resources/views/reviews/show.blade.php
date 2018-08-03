@@ -16,13 +16,13 @@
                         <div class="entry clearfix">
 
                             <div class="entry-title">
-                                <h2>{{ $movie->title }}</h2>
+                                <h2>{{ $review->title }}</h2>
                             </div>
 
                             <ul class="entry-meta clearfix">
                                 <li><i class="icon-calendar3"></i> {{ $review->created_at }}</li>
                                 <li><a href="#"><i class="icon-user"></i> {{ $username }}</a></li>
-                                <li><i class="icon-folder-open"></i> <a href="#">Reviews</a></li>
+                                <li><i class="fa fa-film"></i> <a href="#">{{ $movie->title }}</a></li>
                                 <li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>
                                 <li><a href="#"><i class="icon-like"></i> 100 Likes</a></li>
                             </ul>

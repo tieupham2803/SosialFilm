@@ -19,13 +19,14 @@ class ReviewsController extends Controller
 
     public function create()
     {
-        return view('reviews.create');
+        $movies = Movie::pluck('title', 'id');
+
+        return view('reviews.create',  compact('movies'));
     }
 
     public function store(ReviewFormRequest $request)
     {
         $data = $request->all();
-        $data['user_id'] = 1;
         Review::create($data);
         $newReview = Review::orderBy('id', 'desc')->take(1)->get();
 
