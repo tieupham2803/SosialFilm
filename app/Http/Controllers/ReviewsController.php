@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReviewFormRequest;
 use Illuminate\Http\Request;
 use App\Review;
+use App\Movie;
+use App\User;
 
 class ReviewsController extends Controller
 {
@@ -33,8 +35,10 @@ class ReviewsController extends Controller
     public function show($id)
     {
         $review = Review::findOrFail($id);
+        $movie = Movie::find($review->movie_id);
+        $username = User::find($review->user_id)->name;
 
-        return view('reviews.show', compact('review'));
+        return view('reviews.show', compact('review', 'movie', 'username'));
     }
 
     public function edit($id)
