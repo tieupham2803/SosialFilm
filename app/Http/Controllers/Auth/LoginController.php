@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
+use Socialite;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -20,20 +23,41 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function getFacebookCallback()
+    {
+        $data = Socialite::driver('facebook')->user();
+        $user = User::where('email', $data->email)->first();
+
+        if (!is_null($user)) {
+            Auth::login($user);
+            $user->name = $data->user['name'];
+            $user->facebook_id = $data->id;
+            $user->save();
+        } else {
+            $user = User::where('facebook_id', $data->id)->first();
+            if (is_null($user)) {
+                $tmp['name'] = $data->user['name'];
+                $tmp['email'] = $data->email;
+                $tmp['facebook_id'] = $data->id;
+                $newUser = User::create($tmp);
+                Auth::login($newUser);
+            } else {
+                Auth::login($user);
+            }
+        }
+
+        return redirect('/');
     }
 }
