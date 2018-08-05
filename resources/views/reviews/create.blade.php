@@ -27,10 +27,12 @@
                                     {!! Form::label('Title') !!}
                                     {!! Form::text('title', null, array('class' => 'sm-form-control')) !!}
                                 </div>
+
                                 <div class="col_one_third">
-                                    {!! Form::label('Movie') !!}
-                                    {!! Form::select('movie_id', ['1' => 'Mission: Impossible', '2' => 'Avenger', '3' => 'Avenger2'], null, array('class' => 'select2 sm-form-control fix-select', 'placeholder' => 'Choose a film...')) !!}
+                                    {!! Form::label('Movie', trans('message.selectmovie')) !!}
+                                    {!! Form::select('movie_id', $movies, null, array('class' => 'select2 sm-form-control fix-select', 'placeholder' => 'Choose a film...')) !!}
                                 </div>
+                                {!! Form::hidden('user_id', Auth::user()->id, ['class' => 'sm-form-control']) !!}
                                 <div class="clear"></div>
                                 <div class="col_full">
                                     {!! Form::label('Content') !!}
