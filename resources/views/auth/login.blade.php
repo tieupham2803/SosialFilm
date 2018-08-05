@@ -52,6 +52,9 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 {{ Form::submit( __('Login'), ['class' => 'btn btn-primary']) }}
+                                <a class="btn btn-link" href="{{ route('login.facebook') }}">
+                                    {{ __('Login with Facebook') }}
+                                </a>
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>

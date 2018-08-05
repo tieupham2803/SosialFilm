@@ -42,3 +42,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
+Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login.facebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@getFacebookCallback');
