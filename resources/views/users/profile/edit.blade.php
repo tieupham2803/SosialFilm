@@ -23,7 +23,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{ Form::open(['route' => ['profile.update', $id], 'method' => 'put', 'id' => 'profile']) }}
+                        {{ Form::open(['route' => ['profile.update', $id], 'file' => true, 'method' => 'put', 'id' => 'profile', 'enctype' => 'multipart/form-data']) }}
                         {!! csrf_field() !!}
                         <div class="form-group">
                             {!! Form::label(__('Name')) !!}
@@ -34,8 +34,13 @@
                             {!! Form::text('email', $user->email, ['class' => 'form-control', 'id' => 'email', 'placeholder' => 'Enter mail']) !!}
                         </div>
                         <div class="form-group">
+                            <img src="{{ $user->avatar }}" class="img-circle ava-height60">
+                            {!! Form::label(__('Avatar')) !!}
+                            {!! Form::file('image', null, ['type' => 'file', 'id' => 'image']) !!}
+                        </div>
+                        <div class="form-group">
                             {!! Form::label(__('Password')) !!}
-                            {!! Form::text('password', null, ['class' => 'form-control', 'id' => 'password', 'placeholder' => 'Password', 'autocomplete' => 'off']) !!}
+                            {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => 'Password', 'autocomplete' => 'off']) !!}
                         </div>
                         {!! Form::submit(__('Update'), ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}

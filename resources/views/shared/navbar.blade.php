@@ -6,8 +6,8 @@
             <div id="logo">
                 <a href="/" class="standard-logo" data-dark-logo="{{ asset('images/logo-dark.png') }}"><img
                             src="{{ asset('images/logo.png') }}" alt="Canvas Logo"></a>
-                <a href="/" class="retina-logo" data-dark-logo="{{ asset('images/logo-dark@2x.png') }}"><img
-                            src="{{ asset('images/logo%402x.png') }}" alt="Canvas Logo"></a>
+                <a href="/" class="retina-logo" data-dark-logo="{{ asset('images/logo.png') }}"><img
+                            src="{{ asset('images/logo.png') }}" alt="Canvas Logo"></a>
             </div>
 
             <nav id="primary-menu">
@@ -57,10 +57,14 @@
                                         {{ __('Logout') }}
                                     </a>
                                     {{ Form::open(['url' => 'logout', 'id' => 'logout-form', 'class' => 'd-none']) }}
+                                    @csrf
                                     {{ Form::close() }}
                                 </li>
                             </ul>
                         </li>
+                        <div id="logo" class="nav-avatar">
+                            <img src="{{ Auth::user()->avatar }}" class="img-circle img-avatar">
+                        </div>
                     @endguest
                 </ul>
 

@@ -25,21 +25,21 @@
 
                                 <div class="col_one_third">
                                     {!! Form::label('Title') !!}
-                                    {!! Form::text('title', null, array('class' => 'sm-form-control')) !!}
+                                    {!! Form::text('title', null, ['class' => 'sm-form-control']) !!}
                                 </div>
 
                                 <div class="col_one_third">
                                     {!! Form::label('Movie', trans('message.selectmovie')) !!}
-                                    {!! Form::select('movie_id', $movies, null, array('class' => 'select2 sm-form-control fix-select', 'placeholder' => 'Choose a film...')) !!}
+                                    {!! Form::select('movie_id', $movies, null, ['class' => 'select2 sm-form-control fix-select', 'placeholder' => 'Choose a film...', 'size' => '5']) !!}
                                 </div>
                                 {!! Form::hidden('user_id', Auth::user()->id, ['class' => 'sm-form-control']) !!}
                                 <div class="clear"></div>
                                 <div class="col_full">
                                     {!! Form::label('Content') !!}
-                                    {!! Form::textarea('content', null, array('class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'my-editor')) !!}
+                                    {!! Form::textarea('content', null, ['class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'my-editor']) !!}
                                 </div>
                                 <div class="col_full nobottommargin">
-                                    {!! Form::submit(__('Submit Review'), array('class' => 'button button-3d nomargin')) !!}
+                                    {!! Form::submit(__('Submit Review'), ['class' => 'button button-3d nomargin']) !!}
                                 </div>
                             {!! Form::close() !!}
                         </div>

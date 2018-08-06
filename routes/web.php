@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@welcome');
+Route::get('/', 'PagesController@welcome');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resources([
