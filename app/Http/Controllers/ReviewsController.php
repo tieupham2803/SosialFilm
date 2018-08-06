@@ -21,7 +21,7 @@ class ReviewsController extends Controller
     {
         $movies = Movie::pluck('title', 'id');
 
-        return view('reviews.create',  compact('movies'));
+        return view('reviews.create', compact('movies'));
     }
 
     public function store(ReviewFormRequest $request)
