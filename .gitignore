@@ -17,3 +17,7 @@ yarn-error.log
 /public/images/actors
 /public/photos
 /public/vendor
+composer.lock
+package-lock.json
+bower.lock
+

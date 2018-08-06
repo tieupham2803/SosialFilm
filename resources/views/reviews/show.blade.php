@@ -16,34 +16,22 @@
                         <div class="entry clearfix">
 
                             <div class="entry-title">
-                                <h2>Incredibles 2 (2018)</h2>
+                                <h2>{{ $review->title }}</h2>
                             </div>
 
                             <ul class="entry-meta clearfix">
-                                <li><i class="icon-calendar3"></i> 10th July 2014</li>
-                                <li><a href="#"><i class="icon-user"></i> anhtu</a></li>
-                                <li><i class="icon-folder-open"></i> <a href="#">Reviews</a></li>
+                                <li><i class="icon-calendar3"></i> {{ $review->created_at }}</li>
+                                <li><a href="#"><i class="icon-user"></i> {{ $username }}</a></li>
+                                <li><i class="fa fa-film"></i> <a href="#">{{ $movie->title }}</a></li>
                                 <li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>
                                 <li><a href="#"><i class="icon-like"></i> 100 Likes</a></li>
                             </ul>
-
                             <div class="entry-image">
-                                <a href="#"><img src="http://image.phimmoi.net/post/2018/06/25/d3f7a72ccf8cbb8452375.jpg" alt="Blog Single"></a>
+                                <a href="#"><img src="{{ asset($movie->poster) }}" alt="Blog Single"></a>
                             </div>
 
                             <div class="entry-content notopmargin">
-                                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-                                <p>Nullam id dolor id nibh ultricies vehicula ut id elit. <a href="#">Curabitur blandit tempus porttitor</a>. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper.</p>
-                                <blockquote><p>Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p></blockquote>
-                                <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus.</p>
-                                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href="#">Nullam quis risus eget urna</a> mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <pre>#header-inner {
-	width: 940px;
-	margin: 0 auto;
-	padding-top: 40px;
-}</pre>
-                                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-                                <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper.</p>
+                                <p>{!! $review->content !!}</p>
 
 
                                 <div class="tagcloud clearfix bottommargin">
@@ -66,22 +54,6 @@
                                         <a href="#" class="social-icon si-borderless si-twitter">
                                             <i class="icon-twitter"></i>
                                             <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon si-borderless si-pinterest">
-                                            <i class="icon-pinterest"></i>
-                                            <i class="icon-pinterest"></i>
-                                        </a>
-                                        <a href="#" class="social-icon si-borderless si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                        <a href="#" class="social-icon si-borderless si-rss">
-                                            <i class="icon-rss"></i>
-                                            <i class="icon-rss"></i>
-                                        </a>
-                                        <a href="#" class="social-icon si-borderless si-email3">
-                                            <i class="icon-email3"></i>
-                                            <i class="icon-email3"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -108,73 +80,6 @@
                             </div>
                         </div>
                         <div class="line"></div>
-                        <h4>Related Posts:</h4>
-                        <div class="related-posts clearfix">
-                            <div class="col_half nobottommargin">
-                                <div class="mpost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="images/blog/small/10.jpg" alt="Blog Single"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">This is an Image Post</a></h4>
-                                        </div>
-                                        <ul class="entry-meta clearfix">
-                                            <li><i class="icon-calendar3"></i> 10th July 2014</li>
-                                            <li><a href="#"><i class="icon-comments"></i> 12</a></li>
-                                        </ul>
-                                        <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                                    </div>
-                                </div>
-                                <div class="mpost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="images/blog/small/20.jpg" alt="Blog Single"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">This is a Video Post</a></h4>
-                                        </div>
-                                        <ul class="entry-meta clearfix">
-                                            <li><i class="icon-calendar3"></i> 24th July 2014</li>
-                                            <li><a href="#"><i class="icon-comments"></i> 16</a></li>
-                                        </ul>
-                                        <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col_half nobottommargin col_last">
-                                <div class="mpost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="images/blog/small/21.jpg" alt="Blog Single"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">This is a Gallery Post</a></h4>
-                                        </div>
-                                        <ul class="entry-meta clearfix">
-                                            <li><i class="icon-calendar3"></i> 8th Aug 2014</li>
-                                            <li><a href="#"><i class="icon-comments"></i> 8</a></li>
-                                        </ul>
-                                        <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                                    </div>
-                                </div>
-                                <div class="mpost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="images/blog/small/22.jpg" alt="Blog Single"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">This is an Audio Post</a></h4>
-                                        </div>
-                                        <ul class="entry-meta clearfix">
-                                            <li><i class="icon-calendar3"></i> 22nd Aug 2014</li>
-                                            <li><a href="#"><i class="icon-comments"></i> 21</a></li>
-                                        </ul>
-                                        <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div id="comments" class="clearfix">
                             <h3 id="comments-title"><span>3</span> Comments</h3>

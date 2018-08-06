@@ -17,4 +17,6 @@ return [
     'manager' => 'Trang quản trị | Mrso',
     'homepage' => 'Trang Chủ',
     'review' => 'Reviews',
+    'selectmovie' => 'Chọn phim reviews...'
+
 ];

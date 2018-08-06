@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReviewFormRequest;
 use Illuminate\Http\Request;
 use App\Review;
+use App\Movie;
+use App\User;
 
 class ReviewsController extends Controller
 {
@@ -17,13 +19,14 @@ class ReviewsController extends Controller
 
     public function create()
     {
-        return view('reviews.create');
+        $movies = Movie::pluck('title', 'id');
+
+        return view('reviews.create',  compact('movies'));
     }
 
     public function store(ReviewFormRequest $request)
     {
         $data = $request->all();
-        $data['user_id'] = 1;
         Review::create($data);
         $newReview = Review::orderBy('id', 'desc')->take(1)->get();
 
@@ -33,8 +36,10 @@ class ReviewsController extends Controller
     public function show($id)
     {
         $review = Review::findOrFail($id);
+        $movie = Movie::find($review->movie_id);
+        $username = User::find($review->user_id)->name;
 
-        return view('reviews.show', compact('review'));
+        return view('reviews.show', compact('review', 'movie', 'username'));
     }
 
     public function edit($id)
