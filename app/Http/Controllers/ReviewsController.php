@@ -38,20 +38,21 @@ class ReviewsController extends Controller
     public function show($id)
     {
         $review = Review::findOrFail($id);
-        $movie = Movie::find($review->movie_id);
-        $username = User::find($review->user_id)->name;
-        $loggedin_user = Auth::user()->id;
+        $movie = Movie::findOrFail($review->movie_id);
+        $username = User::findOrFail($review->user_id)->name;
+        $loggedInUser = Auth::user()->id;
         $like = Like::where('review_id', '=', $review->id)->count();
-        $like_user = Like::where(['user_id' => $loggedin_user, 'review_id' => $id])->first();
+        $likeUser = Like::where(['user_id' => $loggedInUser, 'review_id' => $id])->first();
 
-        return view('reviews.show', compact('review', 'movie', 'username', 'like', 'like_user'));
+        return view('reviews.show', compact('review', 'movie', 'username', 'like', 'likeUser'));
     }
 
     public function edit($id)
     {
         $review = Review::findOrFail($id);
+        $movies = Movie::pluck('title', 'id');
 
-        return view('reviews.edit', compact('review', 'id'));
+        return view('reviews.edit', compact('review', 'id', 'movies'));
     }
 
     public function update(ReviewFormRequest $request, $id)
@@ -73,15 +74,15 @@ class ReviewsController extends Controller
 
     public function like($id)
     {
-        $loggedin_user = Auth::user()->id;
-        $like_user = Like::liked($loggedin_user, $id);
-        if (empty($like_user->user_id)) {
-            $user_id = Auth::user()->id;
-            $like1 = Like::create(['user_id' => $user_id, 'review_id' => $id]);
+        $loggedInUser = Auth::user()->id;
+        $likeUser = Like::liked($loggedInUser, $id);
+        if (empty($likeUser->user_id)) {
+            $userId = Auth::user()->id;
+            $like1 = Like::create(['user_id' => $userId, 'review_id' => $id]);
 
             return redirect()->route('reviews.show', $id);
         } else {
-            $like_user->delete();
+            $likeUser->delete();
 
             return redirect()->route('reviews.show', $id);
         }

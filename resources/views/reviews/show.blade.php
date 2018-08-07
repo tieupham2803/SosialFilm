@@ -33,7 +33,7 @@
                             <div class="entry-content notopmargin">
                                 <p>{!! $review->content !!}</p>
 
-                                @if (empty($like_user))
+                                @if (empty($likeUser))
                                 <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
                                     <a href="{{ route('like', ['id' => $review->id]) }}">
                                         <span class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
