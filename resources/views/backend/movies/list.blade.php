@@ -25,21 +25,16 @@
 
         <div class="panel-body">
             <table class="table table-striped table-bordered table-hover" id="dataTables">
+
                 <thead>
                     <tr align="center">
                         <th>{{ trans('message.stt') }}</th>
                         <th>{{ trans('message.name') }}</th>
                         <th>{{ trans('message.poster') }}</th>
-                            {{-- <th>{{ trans('message.overview') }}</th> --}}
                         <th>{{ trans('message.trailer') }}</th>
-                            {{-- <th>{{ trans('message.imdb_score') }}</th> --}}
-                            {{-- <th>{{ trans('message.director') }}</th> --}}
                         <th>{{ trans('message.genre') }}</th>
                         <th>{{ trans('message.actor') }}</th>
-                            {{-- <th>{{ trans('message.country') }}</th> --}}
                         <th>{{ trans('message.action') }}</th>
-
-
                     </tr>
                 </thead>
                 <tbody>
