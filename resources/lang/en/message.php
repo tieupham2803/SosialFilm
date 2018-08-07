@@ -20,5 +20,18 @@ return [
     'selectmovie' => 'Movie',
     'unlike' => 'Unlike',
     'like' => 'Like',
+    'poster' => 'poster',
+    'genre' => 'genre',
+    'overview' => 'overview',
+    'trailer' => 'trailer',
+    'imdb_score' => 'imdb score',
+    'director' => 'director',
+    'actor' => 'actor',
+    'actor' => 'actor',
+    'movie-list' => 'movie list',
+    'country' => 'country',
+    'add-movie' => 'Add a new movie'
+
 
 ];
+

@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'PagesController@home');
     Route::resource('genres', 'GenreController')->except(['show']);
     Route::resource('actors', 'ActorController')->except(['show']);
+    Route::resource('movies', 'MovieController')->except(['show']);
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
