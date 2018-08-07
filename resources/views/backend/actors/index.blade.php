@@ -32,6 +32,7 @@
                     <th>{{ __('Date of birth') }}</th>
                     <th>{{ __('Information') }}</th>
                     <th>{{ __('Avatar') }}</th>
+                    <th>{{ trans('message.action') }}</th>
                 </tr>
                 </thead>
                 <tbody>
