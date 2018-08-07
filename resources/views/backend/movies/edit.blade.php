@@ -25,10 +25,12 @@
         {{-- {!! Form::open(['method' => 'PUT','route' => ['genres.update', $cal->id]]) !!} --}}
          {{ Form::open(['route' => ['genres.update', $genre->id], 'method' => 'PUT']) }}
             <div class="form-group">
+
                 {!! Form::label(trans('message.genre-name')) !!}
                 {!! Form::text('name', $genre->name, ['class' => 'form-control', 'placeholder' => trans('message.genre-name'), 'required' => 'required']) !!}
             </div>
             {!! Form::button(trans('message.genre-edit-page'), ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
+
         {!! Form::close() !!}
     </div>
 </div>

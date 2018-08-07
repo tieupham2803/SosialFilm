@@ -27,7 +27,6 @@ return [
     'imdb_score' => 'imdb score',
     'director' => 'director',
     'actor' => 'actor',
-    'actor' => 'actor',
     'movie-list' => 'movie list',
     'country' => 'country',
     'add-movie' => 'Add a new movie',
@@ -44,5 +43,11 @@ return [
     'realease_date' => 'Realease date',
     'movie_name' => 'Movie name',
     'error' => 'Error!!!',
+    'movies' => 'Movies',
+    'genres' => 'Genres',
+    'actors' => 'Actors',
+    'roles' => 'Roles',
+    'users' => 'Users'
 
 ];
+

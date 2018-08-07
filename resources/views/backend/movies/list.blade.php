@@ -25,7 +25,6 @@
 
         <div class="panel-body">
             <table class="table table-striped table-bordered table-hover" id="dataTables">
-
                 <thead>
                     <tr align="center">
                         <th>{{ trans('message.stt') }}</th>
@@ -70,6 +69,7 @@
                         </tr>
                     @endforeach
                 </tbody>
+
             </table>
             <a href="{{ route('movies.create') }}" class="btn btn-primary">{{ trans('message.add-movie') }}</a>
         </div>
@@ -82,6 +82,7 @@
                 'order': [[ 0, 'desc' ]],
             });
         });
+
         function xacnhanxoa(msg) {
             if(window.confirm(msg)) {
                 return true;

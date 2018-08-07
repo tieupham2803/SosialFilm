@@ -1,15 +1,15 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="brand" >
-        <a href="{{ url('/') }}">
-            <h1></h1>
-        </a>
+        <div >
+
+        </div>
     </div>
     <div class="container-fluid">
         <div class="navbar-btn">
-            <button type="button" class="btn-toggle-fullwidth">
-                <i class="lnr lnr-arrow-left-circle"></i>
-            </button>
+            <a href="/" >
+                <img src="{{ asset('images/logo1.png') }}">
+            </a>
         </div>
         <div id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
