@@ -31,11 +31,6 @@
     <script src="{{ asset('js/functions.js') }}"></script>
     <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            $('.select2').select2();
-        });
-    </script>
-    <script>
         var options = {
             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
             filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
@@ -43,8 +38,6 @@
             filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
         };
     </script>
-    <script>
-        CKEDITOR.replace('my-editor', options);
-    </script>
+    @yield('script')
 </body>
 </html>

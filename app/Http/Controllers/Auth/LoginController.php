@@ -51,6 +51,7 @@ class LoginController extends Controller
                 $tmp['name'] = $data->user['name'];
                 $tmp['email'] = $data->email;
                 $tmp['facebook_id'] = $data->id;
+                $tmp['avatar'] = $data->avatar_original;
                 $newUser = User::create($tmp);
                 Auth::login($newUser);
             } else {

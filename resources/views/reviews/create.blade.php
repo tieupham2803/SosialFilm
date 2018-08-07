@@ -49,3 +49,15 @@
         </div>
     </section>
 @endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+
+    <script>
+        CKEDITOR.replace('my-editor', options);
+    </script>
+@endsection

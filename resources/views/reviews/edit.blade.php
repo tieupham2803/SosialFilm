@@ -31,12 +31,12 @@
                             </div>
                             <div class="col_one_third">
                                 {!! Form::label(__('Movie')) !!}
-                                {!! Form::select('movie_id', ['1' => 'Mission: Impossible', '2' => 'Avenger', '3' => 'Avenger2'], $review->movie_id, ['class' => 'select2 sm-form-control fix-select', 'placeholder' => 'Choose a film...']) !!}
+                                {!! Form::select('movie_id', $movies, $review->movie_id, ['class' => 'select2 sm-form-control fix-select', 'placeholder' => 'Choose a film...', 'size' => '5']) !!}
                             </div>
                             <div class="clear"></div>
                             <div class="col_full">
                                 {!! Form::label(__('Content')) !!}
-                                {!! Form::textarea('content', $review->content, ['class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'ckeditor']) !!}
+                                {!! Form::textarea('content', $review->content, ['class' => 'sm-form-control', 'cols' => 58, 'rows' => 7, 'id' => 'my-editor']) !!}
                             </div>
                             <div class="col_full nobottommargin">
                                 {!! Form::submit(__('Submit Review'), ['class' => 'button button-3d nomargin']) !!}
@@ -48,4 +48,16 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+
+    <script>
+        CKEDITOR.replace('my-editor', options);
+    </script>
 @endsection
