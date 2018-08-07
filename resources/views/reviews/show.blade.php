@@ -562,4 +562,57 @@
     </footer>
 
     <div id="gotoTop" class="icon-angle-up"></div>
+
+    {{--<div class="container">--}}
+        {{--<div class="row justify-content-center">--}}
+            {{--<div class="col-md-8">--}}
+                {{--<div class="card">--}}
+                    {{--<div class="card-body">--}}
+                        {{--<p><b>{{ $review->title }}</b></p>--}}
+                        {{--<p>{{ $review->body }}</p>--}}
+                        {{--<hr />--}}
+                        {{--<h4>{{ __('Display Comments') }}</h4>--}}
+                        {{--@include('partials._comment_replies', ['comments' => $review->comments, 'review_id' => $review->id])--}}
+                        {{--<hr />--}}
+                        {{--<h4>{{ __('Add comment') }}</h4>--}}
+                        {{--{{ Form::open(['method' => 'POST', 'route' => 'comment.add']) }}--}}
+                        {{--{{ Form::text('content', null, ['class' => 'form-control', 'id' => 'content']) }}--}}
+                        {{--{{ Form::hidden('review_id', $review->id), ['id' => 'review_id'] }}--}}
+                        {{--{{ Form::submit(__('Add comment'), ['class' => 'btn btn-warning', 'id' => 'ajaxSubmit']) }}--}}
+                        {{--{{ Form::close() }}--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 @endsection
+{{--<script src="http://code.jquery.com/jquery-3.3.1.min.js"--}}
+        {{--integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="--}}
+        {{--crossorigin="anonymous">--}}
+{{--</script>--}}
+{{--<script>--}}
+    {{--jQuery(document).ready(function(){--}}
+        {{--jQuery('#ajaxSubmit').click(function(e){--}}
+            {{--e.preventDefault();--}}
+            {{--$.ajaxSetup({--}}
+                {{--headers: {--}}
+{{--//                    'X-CSRF-TOKEN': $('[name="_token"]').attr('content')--}}
+                    {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+                {{--}--}}
+            {{--});--}}
+            {{--jQuery.ajax({--}}
+                {{--url: "{{ url('comment/store') }}",--}}
+                {{--method: 'POST',--}}
+                {{--data: {--}}
+                    {{--content: jQuery('#content').val(),--}}
+                    {{--review_id: jQuery('#review_id').val(),--}}
+                    {{--_token: '{{csrf_token()}}'--}}
+                {{--},--}}
+                {{--success: function(result){--}}
+                    {{--console.log(result);--}}
+                    {{--jQuery('.alert').show();--}}
+                    {{--jQuery('.alert').html(result.success);--}}
+                {{--}});--}}
+        {{--});--}}
+    {{--});--}}
+{{--</script>--}}
