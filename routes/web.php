@@ -18,6 +18,8 @@ Route::group(['middleware' => 'auth'], function () {
         'reviews' => 'ReviewsController',
         'profile' => 'ProfileController',
     ]);
+    Route::post('comment/store', 'CommentsController@store')->name('comment.add');
+    Route::post('reply/store', 'CommentsController@replyStore')->name('reply.add');
 });
 
 Auth::routes();

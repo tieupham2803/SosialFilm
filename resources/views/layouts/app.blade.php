@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css' ) }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" type="text/css"/>
     <link href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('bower_components/Font-Awesome/web-fonts-with-css/css/fontawesome-all.min.css') }}">
 </head>
