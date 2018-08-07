@@ -47,7 +47,10 @@ return [
     'genres' => 'Genres',
     'actors' => 'Actors',
     'roles' => 'Roles',
-    'users' => 'Users'
-
+    'users' => 'Users',
+    'public' => 'Public',
+    'likeforguest' => 'You must be logged in to likes this review',
 ];
+
+
 

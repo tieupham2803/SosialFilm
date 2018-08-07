@@ -25,6 +25,7 @@
 
         <div class="panel-body">
             <table class="table table-striped table-bordered table-hover" id="dataTables">
+
                 <thead>
                     <tr align="center">
                         <th>{{ trans('message.stt') }}</th>
@@ -85,6 +86,7 @@
 
         function xacnhanxoa(msg) {
             if(window.confirm(msg)) {
+
                 return true;
             }
             return  false;

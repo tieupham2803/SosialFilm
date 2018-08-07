@@ -19,17 +19,20 @@
                         <i class="fa fa-users"></i>
                         <span>{{ trans('message.users') }}</span>
                     </a>
-                </li>                <li>
+                </li>
+                <li>
                     <a href="{{ route('genres.index') }}" >
                         <i class="fa fa-bars"></i>
                         <span>{{ trans('message.genres') }}</span>
                     </a>
-                </li>                <li>
+                </li>
+                <li>
                     <a href="{{ route('actors.index') }}" >
                         <i class="fa fa-user-secret"></i>
                         <span>{{ trans('message.actors') }}</span>
                     </a>
-                </li>                <li>
+                </li>
+                <li>
                     <a href="{{ route('roles.index') }}" >
                         <i class="fa fa-bolt"></i>
                         <span>{{ trans('message.roles') }}</span>

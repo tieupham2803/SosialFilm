@@ -9,12 +9,9 @@ class GenreMovie extends Model
     //
     protected $fillable = ['movie_id', 'genre_id'];
     public $timestamps = false;
-
-    public $timestamps = false;
-
     protected $table = 'genre_movie';
 
-    public static  function scopeInsertGenreMovie($query, $genreId, $movieId)
+    public static function scopeInsertGenreMovie($query, $genreId, $movieId)
     {
         $genreMovie['genre_id'] = $genreId;
         $genreMovie['movie_id'] = $movieId;

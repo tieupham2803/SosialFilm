@@ -32,19 +32,30 @@
 
                             <div class="entry-content notopmargin">
                                 <p>{!! $review->content !!}</p>
-
-                                @if (empty($likeUser))
-                                <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
-                                    <a href="{{ route('like', ['id' => $review->id]) }}">
-                                        <span class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
-                                    </a>
-                                </div>
+                                @if (!Auth::guest())
+                                    @if (empty($likeUser))
+                                    <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
+                                        <a href="{{ route('like', ['id' => $review->id]) }}">
+                                            <span class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
+                                        </a>
+                                    </div>
+                                    @else
+                                    <div class=" clearfix bottommargin btn btn-outline-danger  " id = "like-btn">
+                                        <a href="{{ route('like', ['id' => $review->id]) }}">
+                                            <span class="fa fa-thumbs-down">{{ trans('message.unlike') }}</span>
+                                        </a>
+                                    </div>
+                                    @endif
                                 @else
-                                <div class=" clearfix bottommargin btn btn-outline-danger  " id = "like-btn">
-                                    <a href="{{ route('like', ['id' => $review->id]) }}">
-                                        <span class="fa fa-thumbs-down">{{ trans('message.unlike') }}</span>
-                                    </a>
-                                </div>
+                                    <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
+                                        <a href="">
+                                            <span class= "fa fa-thumbs-up">({{ $like }})</span>
+                                        </a>
+                                        <span> {{ trans('message.like') }}</span>
+                                    </div>
+                                    <div class="clearfix bottommargin alert alert-primary ">
+                                        <span> {{ trans('message.likeforguest') }}</span>
+                                    </div>
                                 @endif
                                 <div class="clear"></div>
 

@@ -41,13 +41,11 @@ class MovieController extends Controller
      */
     public function create()
     {
-
         $actors = Actor::pluck('name', 'id');
         $genre = Genre::pluck('name', 'id');
         $countries = Country::pluck('name', 'id');
 
         return view('backend.movies.add', compact('actors', 'genre', 'countries'));
-
     }
 
     /**
@@ -56,7 +54,6 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(MovieFormRequest $request)
     {
         //
