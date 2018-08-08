@@ -75,7 +75,7 @@ class MovieController extends Controller
             $file->move(public_path() . '/images/movies/', $name);
             $data['poster'] = '/images/movies/' . $name;
             $imagePath = public_path() . '/images/movies/' . $name;
-            Image::make($imagePath)->resize(250, 250)->save();
+            Image::make($imagePath)->save();
         } else {
             $data['poster'] = 'null';
         }
