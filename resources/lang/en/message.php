@@ -30,8 +30,19 @@ return [
     'actor' => 'actor',
     'movie-list' => 'movie list',
     'country' => 'country',
-    'add-movie' => 'Add a new movie'
-
+    'add-movie' => 'Add a new movie',
+    'selectgenre' => 'Select genre',
+    'selectactor' => 'Select actor',
+    'add-actor' => 'Add a new actor',
+    'select-country' => 'Select country',
+    'select-poster' => 'Select Poster',
+    'director' => 'Director',
+    'overview' => 'Overview',
+    'runtime' => 'RUntime',
+    'trailer' => 'Trailer',
+    'imdb_score' => 'Imdb score',
+    'realease_date' => 'Realease date',
+    'movie_name' => 'Movie name',
+    'error' => 'Error!!!',
 
 ];
-

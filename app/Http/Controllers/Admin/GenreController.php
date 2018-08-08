@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\GenreRequest;
 use App\Genre;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Requests\GenreFormRequest;
 
 class GenreController extends Controller
 {
@@ -40,7 +41,7 @@ class GenreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenreFormRequest $request)
     {
         //
         // $genre = new Genre;
