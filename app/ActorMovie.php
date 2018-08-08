@@ -19,4 +19,5 @@ class ActorMovie extends Model
 
         return $query->insert(['actor_id' => $actorId, 'movie_id' => $movieId]);
     }
+
 }

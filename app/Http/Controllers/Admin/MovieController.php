@@ -41,6 +41,7 @@ class MovieController extends Controller
      */
     public function create()
     {
+
         $actors = Actor::pluck('name', 'id');
         $genre = Genre::pluck('name', 'id');
         $countries = Country::pluck('name', 'id');
