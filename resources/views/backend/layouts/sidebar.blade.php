@@ -15,6 +15,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('review.index') }}" >
+                        <i class="fa fa-newspaper"></i>
+                        <span>{{ trans('message.reviews') }}</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.user.index') }}" >
                         <i class="fa fa-users"></i>
                         <span>{{ trans('message.users') }}</span>
