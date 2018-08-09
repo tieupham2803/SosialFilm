@@ -14,14 +14,12 @@
 Route::get('/', 'PagesController@welcome');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resources([
-        'reviews' => 'ReviewsController',
-        'profile' => 'ProfileController',
-    ]);
+    Route::resource('profile', 'ProfileController');
+    Route::resource('reviews', 'ReviewsController', ['except' => ['show']]);
     Route::post('comment/store', 'CommentsController@store')->name('comment.add');
     Route::post('reply/store', 'CommentsController@replyStore')->name('reply.add');
 });
-
+Route::get('reviews/{review}', 'ReviewsController@show')->name('reviews.show');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -40,8 +38,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::post('users/{id?}/edit', 'UsersController@update');
     Route::get('/', 'PagesController@home');
     Route::resource('genres', 'GenreController')->except(['show']);
-    Route::resource('actors', 'ActorController')->except(['show']);
-    Route::resource('movies', 'MovieController')->except(['show']);
+    Route::resource('actors', 'ActorController');
+    Route::resource('movies', 'MovieController');
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);

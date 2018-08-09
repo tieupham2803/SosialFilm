@@ -23,7 +23,6 @@
     @endif
 
     <div class="panel-body">
-
         {!! Form::open(['method' => 'POST', 'route' => ['movies.store'], 'enctype' => 'multipart/form-data', 'files' => true]) !!}
             <div class="form-group">
                 {!! Form::label(trans('message.movie_name')) !!}
@@ -75,7 +74,6 @@
         {!! Form::close() !!}
     </div>
 </div>
-
 @section('script')
     <script>
         $( function() {

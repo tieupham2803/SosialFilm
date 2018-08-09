@@ -26,8 +26,7 @@
                             <div class="entry clearfix">
                                 <div class="entry-image">
                                     <a href="#">
-                                        <img src="https://s3img.vcdn.vn/123phim/2018/07/toa-thap-choc-troi-skyscraper-15311128722018.jpg" alt="Inventore voluptates velit totam ipsa tenetur">
-                                        <div class="entry-date">10<span>Apr</span></div>
+                                        <img src="{{ asset($review->poster) }}" alt="Inventore voluptates velit totam ipsa tenetur">
                                     </a>
                                 </div>
                                 <div class="entry-c">
@@ -35,12 +34,17 @@
                                         <h2><a href="#">{{ $review->title }}</a></h2>
                                     </div>
                                     <ul class="entry-meta clearfix">
-                                        <li><span class="badge badge-warning">Private</span></li>
-                                        <li><a href="#"><i class="icon-time"></i> 11:00 - 19:00</a></li>
-                                        <li><a href="#"><i class="icon-map-marker2"></i> Melbourne, Australia</a></li>
+                                        <li><span class="badge badge-warning">{{ trans('message.public') }}</span></li>
+                                        <li><a href="#"><i class="icon-time"></i>{{ $review->created_at }}</a></li>
+                                        <li><a href="#"><i class="fa fa-film"></i>{{ $review->moviesTitle }}</a></li>
                                     </ul>
                                     <div class="entry-content">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur voluptate rerum molestiae eaque possimus exercitationem eligendi fuga.</p>
+                                     <p class="ArticleBody">
+                                        {!! str_limit(strip_tags($review->content), 400) !!}
+                                        @if (strlen(strip_tags($review->content)) > 400)
+                                          ... <a href="{{ action('ReviewsController@show', $review->id) }}" class="btn btn-info btn-sm">Read More</a>
+                                        @endif
+                                    </p>
                                         <a href="{{ route('reviews.edit', $review->id) }}" class="btn btn-secondary float-left rightmargin" disabled="disabled">Edit</a>
                                         {!! Form::open(['method' => 'delete', 'route' => ['reviews.destroy', $review->id]]) !!}
                                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">

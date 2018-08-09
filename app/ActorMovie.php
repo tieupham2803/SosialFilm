@@ -12,12 +12,11 @@ class ActorMovie extends Model
 
     protected $table = 'actor_movie';
 
-    public static  function scopeInsertActorMovie($query, $actorId, $movieId)
+    public static function scopeInsertActorMovie($query, $actorId, $movieId)
     {
         $actorMovie['actor_id'] = $actorId;
         $actorMovie['movie_id'] = $movieId;
 
         return $query->insert(['actor_id' => $actorId, 'movie_id' => $movieId]);
     }
-
 }

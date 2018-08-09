@@ -9,12 +9,16 @@ use App\Movie;
 use App\User;
 use App\Like;
 use Auth;
+use DB;
 
 class ReviewsController extends Controller
 {
     public function index()
     {
-        $reviews = Review::paginate(config('view.pagination-num-item-in-page'));
+        $loggedin_user = Auth::user()->id;
+        $review_movie = DB::table('reviews')->join('movies', 'reviews.movie_id', '=', 'movies.id')
+        ->select('reviews.*', 'movies.poster', 'movies.title AS moviesTitle')->where('reviews.user_id', '=', $loggedin_user);
+        $reviews =  $review_movie->paginate(config('view.pagination-num-item-in-page'));
 
         return view('reviews.index', compact('reviews'));
     }
@@ -40,11 +44,18 @@ class ReviewsController extends Controller
         $review = Review::findOrFail($id);
         $movie = Movie::findOrFail($review->movie_id);
         $username = User::findOrFail($review->user_id)->name;
-        $loggedInUser = Auth::user()->id;
-        $like = Like::where('review_id', '=', $review->id)->count();
-        $likeUser = Like::where(['user_id' => $loggedInUser, 'review_id' => $id])->first();
+        if (Auth::user()) {
+            $loggedInUser = Auth::user()->id;
+            $like = Like::where('review_id', '=', $review->id)->count();
+            $likeUser = Like::where(['user_id' => $loggedInUser, 'review_id' => $id])->first();
 
-        return view('reviews.show', compact('review', 'movie', 'username', 'like', 'likeUser'));
+            return view('reviews.show', compact('review', 'movie', 'username', 'like', 'likeUser'));
+        } else {
+            $like = Like::where('review_id', '=', $review->id)->count();
+            $likeUser = 0;
+
+            return view('reviews.show', compact('review', 'movie', 'username', 'like', 'likeUser'));
+        }
     }
 
     public function edit($id)
