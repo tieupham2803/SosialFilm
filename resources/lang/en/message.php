@@ -50,7 +50,9 @@ return [
     'users' => 'Users',
     'public' => 'Public',
     'likeforguest' => 'You must be logged in to likes this review',
+    'title' => 'Title',
+    'movie' => 'Movie',
+    'content' => 'Content',
+    'author' => 'Author',
+    'reviews' => 'Reviews'
 ];
-
-
-

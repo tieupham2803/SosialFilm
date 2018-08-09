@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('genres', 'GenreController')->except(['show']);
     Route::resource('actors', 'ActorController');
     Route::resource('movies', 'MovieController');
+    Route::resource('review', 'ReviewsController')->except(['show', 'store', 'update', 'create', 'edit']);
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
