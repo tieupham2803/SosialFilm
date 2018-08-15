@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('reply/store', 'CommentsController@replyStore')->name('reply.add');
 });
 Route::get('reviews/{review}', 'ReviewsController@show')->name('reviews.show');
+Route::post('comment/fetch', 'CommentsController@fetch')->name('comment.fetch');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

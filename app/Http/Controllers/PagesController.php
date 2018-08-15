@@ -44,7 +44,7 @@ class PagesController extends Controller
             return $item1['like'] < $item2['like'] ? 1 : -1;
         });
 
-        return view('pages.home', compact('arrMovies', 'reviews', 'sortReviews'));
+        return view('pages.home', compact('arrMovies', 'reviews', 'sortReviews', 'movies'));
     }
 
     public function ajaxLoadMore(Request $request)

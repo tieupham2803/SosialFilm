@@ -95,11 +95,29 @@
                             </div>
                         </div>
                         <div class="line"></div>
-
+{{--COMMENT BEGINS--}}
                         <div id="comments" class="clearfix">
-                            <h3 id="comments-title"><span>3</span> Comments</h3>
+                            {{--<h3 id="comments-title"><span>3</span> Comments</h3>--}}
+                            <h3 id="comments-title"></h3>
+                            @if (Auth::check())
+                                <div id="respond" class="clearfix">
+                                    <div class="container">
+                                        {{ Form::open(['method' => 'POST', 'id' => 'comment_form', 'route' => 'comment.add', 'class' => 'clearfix']) }}
+                                        <div class="form-group">
+                                            {{ Form::text('content', null, ['id' => 'content', 'class' => 'form-control form-control-custom', 'placeholder' => 'Enter comment', 'autocomplete' => 'off', 'onfocus' => 'this.value=\'\'']) }}
+                                            {{ Form::hidden('is_reply_to', 0, ['id' => 'is_reply_to']) }}
+                                            {{ Form::hidden('review_id', $review->id, ['id' => 'review_id']) }}
+                                            {{ Form::submit( __('Submit'), ['name' => 'submit', 'id' => 'submit', 'class' => 'btn btn-info display-none']) }}
+                                        </div>
+                                        {{ Form::close() }}
+                                        <br />
+                                    </div>
+                                </div>
+                            @else
+                                <p>You need to <a href="{{ url('login') }}">login</a> to comment</p>
+                            @endif
 
-                            <ol class="commentlist clearfix">
+                            <ol class="commentlist clearfix" id="display-comment">
                                 <li class="comment even thread-even depth-1" id="li-comment-1">
                                     <div id="comment-1" class="comment-wrap clearfix">
                                         <div class="comment-meta">
@@ -152,32 +170,6 @@
                                 </li>
                             </ol>
                             <div class="clear"></div>
-
-                            <div id="respond" class="clearfix">
-                                <h3>Leave a <span>Comment</span></h3>
-                                <form class="clearfix" action="#" method="post" id="commentform">
-                                    <div class="col_one_third">
-                                        <label for="author">Name</label>
-                                        <input type="text" name="author" id="author" value="" size="22" tabindex="1" class="sm-form-control" />
-                                    </div>
-                                    <div class="col_one_third">
-                                        <label for="email">Email</label>
-                                        <input type="text" name="email" id="email" value="" size="22" tabindex="2" class="sm-form-control" />
-                                    </div>
-                                    <div class="col_one_third col_last">
-                                        <label for="url">Website</label>
-                                        <input type="text" name="url" id="url" value="" size="22" tabindex="3" class="sm-form-control" />
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div class="col_full">
-                                        <label for="comment">Comment</label>
-                                        <textarea name="comment" cols="58" rows="7" tabindex="4" class="sm-form-control"></textarea>
-                                    </div>
-                                    <div class="col_full nobottommargin">
-                                        <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">Submit Comment</button>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -573,57 +565,117 @@
     </footer>
 
     <div id="gotoTop" class="icon-angle-up"></div>
-
-    {{--<div class="container">--}}
-        {{--<div class="row justify-content-center">--}}
-            {{--<div class="col-md-8">--}}
-                {{--<div class="card">--}}
-                    {{--<div class="card-body">--}}
-                        {{--<p><b>{{ $review->title }}</b></p>--}}
-                        {{--<p>{{ $review->body }}</p>--}}
-                        {{--<hr />--}}
-                        {{--<h4>{{ __('Display Comments') }}</h4>--}}
-                        {{--@include('partials._comment_replies', ['comments' => $review->comments, 'review_id' => $review->id])--}}
-                        {{--<hr />--}}
-                        {{--<h4>{{ __('Add comment') }}</h4>--}}
-                        {{--{{ Form::open(['method' => 'POST', 'route' => 'comment.add']) }}--}}
-                        {{--{{ Form::text('content', null, ['class' => 'form-control', 'id' => 'content']) }}--}}
-                        {{--{{ Form::hidden('review_id', $review->id), ['id' => 'review_id'] }}--}}
-                        {{--{{ Form::submit(__('Add comment'), ['class' => 'btn btn-warning', 'id' => 'ajaxSubmit']) }}--}}
-                        {{--{{ Form::close() }}--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
 @endsection
-{{--<script src="http://code.jquery.com/jquery-3.3.1.min.js"--}}
-        {{--integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="--}}
-        {{--crossorigin="anonymous">--}}
-{{--</script>--}}
-{{--<script>--}}
-    {{--jQuery(document).ready(function(){--}}
-        {{--jQuery('#ajaxSubmit').click(function(e){--}}
-            {{--e.preventDefault();--}}
-            {{--$.ajaxSetup({--}}
-                {{--headers: {--}}
-{{--//                    'X-CSRF-TOKEN': $('[name="_token"]').attr('content')--}}
-                    {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-                {{--}--}}
-            {{--});--}}
-            {{--jQuery.ajax({--}}
-                {{--url: "{{ url('comment/store') }}",--}}
-                {{--method: 'POST',--}}
-                {{--data: {--}}
-                    {{--content: jQuery('#content').val(),--}}
-                    {{--review_id: jQuery('#review_id').val(),--}}
-                    {{--_token: '{{csrf_token()}}'--}}
-                {{--},--}}
-                {{--success: function(result){--}}
-                    {{--console.log(result);--}}
-                    {{--jQuery('.alert').show();--}}
-                    {{--jQuery('.alert').html(result.success);--}}
-                {{--}});--}}
-        {{--});--}}
-    {{--});--}}
-{{--</script>--}}
+
+@section('script')
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('[name="_token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
+            $('#comment_form').on('submit', function(event) {
+                event.preventDefault();
+                var form_data = $(this).serialize();
+                $.ajax({
+                    url: "{{ url('comment/store') }}",
+                    method: 'POST',
+                    data: form_data,
+                    dataType: 'JSON',
+                    success: function(data)
+                    {
+                        load_comment();
+                        $('#comment_form')[0].reset();
+                    }
+                })
+            });
+            $('#reply_submit').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "{{ url('comment/store') }}",
+                    method: 'POST',
+                    data: form_data,
+                    dataType: 'JSON',
+                    success: function(data)
+                    {
+                        load_comment();
+                        $('#reply_form')[0].reset();
+                    }
+                })
+            });
+
+            load_comment();
+            function load_comment()
+            {
+                var i;
+                var html = '';
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{ url('comment/fetch') }}",
+                    data:
+                        {
+                            review_id: window.location.pathname.split('/').slice(-1).pop(),
+                        },
+                    method: 'POST',
+                    dataType: 'JSON',
+                    success: function(data)
+                    {
+                        //0 = email
+                        //1 = created_at
+                        //2 = content
+                        //3 = comment_id
+                        //4 = avatar
+                        $('#comments-title').html('<span>'+ data.length + '</span> Comments');
+                        for (i = 0; i < data.length; i++) {
+                            html += '<li id="li-comment-' + data[i][3] + '">' +
+                                '<div id="comment-' + data[i][3] + '" class="comment-wrap clearfix">' +
+                                '<div class="comment-meta">' +
+                                '<div class="comment-author vcard">' +
+                                '<span class="comment-avatar clearfix">' +
+                                '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
+                                '</span>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="comment-content clearfix">' +
+                                '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
+                                '<p>' + data[i][2] + '</p>' +
+                                '<a class="comment-reply-link"><i id="' + data[i][3] + '" class="icon-reply"></i></a>' +
+                                '</div>' +
+                                '<div class="clear"></div>' +
+                                '</div>' +
+                                '<div id="display-reply-' + data[i][3] + '" class="display-none reply">' +
+                                '</li>';
+                        }
+                        $('#display-comment').html(html);
+                    }
+                })
+            }
+
+            $(document).on('click', '.icon-reply', function (){
+                var id = $(this).attr("id");
+                var review_id = window.location.pathname.split('/').slice(-1).pop();
+                var html = '';
+
+                html += '<div class="container">' +
+                    '    <form method="POST" action="{{ route('comment.add') }}" id="reply_form" class="clearfix">' +
+                    '@csrf' +
+                    '        <div class="form-group">' +
+                    '            <input id="reply-content-' + id + '" class="form-control form-control-custom reply-box" autocomplete="off" placeholder="Enter reply" name="content" type="text">' +
+                    '            <input id="is_reply_to" name="is_reply_to" type="hidden" value="' + id + '">' +
+                    '            <input name="review_id" type="hidden" value="'+ review_id +'">' +
+                    '            <input name="submit" id="reply_submit" class="btn btn-info display-none" type="submit" value="Reply">' +
+                    '        </div>' +
+                    '    </form>' +
+                    '</div>';
+                $('#display-reply-' + id).html(html).toggleClass('display-none');
+                $('.reply-box:not(#reply-content-' + id + ')').hide();
+            });
+        });
+    </script>
+@endsection
+
