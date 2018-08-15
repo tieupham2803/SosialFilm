@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PagesController@welcome');
+Route::get('/loadMore', 'PagesController@ajaxLoadMore');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('profile', 'ProfileController');
@@ -36,7 +37,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::post('roles/create', 'RolesController@store');
     Route::get('users/{id?}/edit', 'UsersController@edit');
     Route::post('users/{id?}/edit', 'UsersController@update');
-    Route::get('/', 'PagesController@home');
+    Route::get('/', 'PagesController@adminIndex');
+    Route::get('/wc', 'PagesController@welcome');
+
     Route::resource('genres', 'GenreController')->except(['show']);
     Route::resource('actors', 'ActorController');
     Route::resource('movies', 'MovieController');
@@ -48,3 +51,4 @@ Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('l
 Route::get('login/facebook/callback', 'Auth\LoginController@getFacebookCallback');
 Route::get('/like/{id}', 'ReviewsController@like')->name('like');
 Route::resource('moviedetails', 'MovieDetailController');
+Route::get('/search/name', 'ReviewsController@searchByName');

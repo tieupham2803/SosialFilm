@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/datatables/media/css/dataTables.bootstrap.min.css') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('admin_assets/img/favicon.png') }}">
-    <link rel="stylesheet" href="{{ asset('bower_components/date-picker/datepicker.css') }}" type="text/css"/>
     <link href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('bower_components/jqueryui-datepicker/datepicker.css') }}" type="text/css"/>
 </head>
@@ -42,8 +41,8 @@
     <script src="{{ asset('bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('bower_components/date-picker/core.js') }}"></script>
-    <script src="{{ asset('bower_components/date-picker/datepicker.js') }}"></script>
+    <script src="{{ asset('bower_components/jqueryui-datepicker/core.js') }}"></script>
+    <script src="{{ asset('bower_components/jqueryui-datepicker/datepicker.js') }}"></script>
     <script src="{{ asset('bower_components/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('bower_components/jqueryui-datepicker/core.js') }}"></script>
     {{-- <script src="{{ asset('bower_components/date-picker/datepicker.js') }}"></script> --}}

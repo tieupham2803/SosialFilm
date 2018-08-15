@@ -98,4 +98,11 @@ class ReviewsController extends Controller
             return redirect()->route('reviews.show', $id);
         }
     }
+
+    public function searchByName(Request $request)
+    {
+        $students = Review::where('title', 'like', '%' . $request->value . '%')->get();
+
+        return response()->json($students);
+    }
 }
