@@ -23,8 +23,9 @@ class UpdateCommentsTable extends Migration
         }
 
         if (Schema::hasColumn('comments', 'review_id')) {
+        } else {
             Schema::table('comments', function ($table) {
-                $table->dropColumn('review_id');
+                $table->integer('review_id')->unsigned();
             });
         }
     }
@@ -34,7 +35,7 @@ class UpdateCommentsTable extends Migration
         Schema::table('comments', function ($table) {
             $table->dropColumn('commentable_type');
             $table->dropColumn('commentable_id');
-            $table->integer('review_id');
+            $table->dropColumn('review_id');
         });
     }
 }
