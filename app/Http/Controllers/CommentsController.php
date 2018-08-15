@@ -20,13 +20,11 @@ class CommentsController extends Controller
             $data['review_id'] = $request->get('review_id');
             $data['user_id'] = Auth::user()->id;
             $comment = Comment::create($data);
-
             return $comment;
         } else {
             return view('/login');
         }
     }
-
     public function fetch(Request $request)
     {
         $result = [];
@@ -46,15 +44,13 @@ class CommentsController extends Controller
                 return $e->getMessage();
             }
         }
-
         return json_encode($result);
     }
-
     public function fetch2(Request $request)
     {
         $result = [];
-        $replies = Comment::where(['is_reply_to' => $request->get('is_reply_to')])
-            ->orderBy('created_at', 'DESC')->get();
+//        $replies = Comment::where(['is_reply_to' => $request->get('is_reply_to')])
+        $replies = Comment::where('is_reply_to', '<>', '0')->where('review_id', '=', $request->get('review_id'))->orderBy('created_at', 'DESC')->get();
         foreach ($replies as $reply) {
             try {
                 $tmp = [];
@@ -70,7 +66,6 @@ class CommentsController extends Controller
                 return $e->getMessage();
             }
         }
-
-        return $result;
+        return json_encode($result);
     }
 }

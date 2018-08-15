@@ -34,17 +34,17 @@
                                 <p>{!! $review->content !!}</p>
                                 @if (!Auth::guest())
                                     @if (empty($likeUser))
-                                    <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
-                                        <a href="{{ route('like', ['id' => $review->id]) }}">
-                                            <span class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
-                                        </a>
-                                    </div>
+                                        <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
+                                            <a href="{{ route('like', ['id' => $review->id]) }}">
+                                                <span class="fa fa-thumbs-up">{{ trans('message.like') }}</span>
+                                            </a>
+                                        </div>
                                     @else
-                                    <div class=" clearfix bottommargin btn btn-outline-danger  " id = "like-btn">
-                                        <a href="{{ route('like', ['id' => $review->id]) }}">
-                                            <span class="fa fa-thumbs-down">{{ trans('message.unlike') }}</span>
-                                        </a>
-                                    </div>
+                                        <div class=" clearfix bottommargin btn btn-outline-danger  " id = "like-btn">
+                                            <a href="{{ route('like', ['id' => $review->id]) }}">
+                                                <span class="fa fa-thumbs-down">{{ trans('message.unlike') }}</span>
+                                            </a>
+                                        </div>
                                     @endif
                                 @else
                                     <div class="btn btn-outline-info clearfix bottommargin " id = "like-btn">
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         <div class="line"></div>
-{{--COMMENT BEGINS--}}
+                        {{--COMMENT BEGINS--}}
                         <div id="comments" class="clearfix">
                             {{--<h3 id="comments-title"><span>3</span> Comments</h3>--}}
                             <h3 id="comments-title"></h3>
@@ -118,56 +118,6 @@
                             @endif
 
                             <ol class="commentlist clearfix" id="display-comment">
-                                <li class="comment even thread-even depth-1" id="li-comment-1">
-                                    <div id="comment-1" class="comment-wrap clearfix">
-                                        <div class="comment-meta">
-                                            <div class="comment-author vcard">
-<span class="comment-avatar clearfix">
-<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' class='avatar avatar-60 photo avatar-default' height='60' width='60' /></span>
-                                            </div>
-                                        </div>
-                                        <div class="comment-content clearfix">
-                                            <div class="comment-author">John Doe<span><a href="#" title="Permalink to this comment">April 24, 2012 at 10:46 am</a></span></div>
-                                            <p>Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                            <a class='comment-reply-link' href='#'><i class="icon-reply"></i></a>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <ul class='children'>
-                                        <li class="comment byuser comment-author-_smcl_admin odd alt depth-2" id="li-comment-3">
-                                            <div id="comment-3" class="comment-wrap clearfix">
-                                                <div class="comment-meta">
-                                                    <div class="comment-author vcard">
-<span class="comment-avatar clearfix">
-<img alt='' src='http://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' /></span>
-                                                    </div>
-                                                </div>
-                                                <div class="comment-content clearfix">
-                                                    <div class="comment-author"><a href='#' rel='external nofollow' class='url'>SemiColon</a><span><a href="#" title="Permalink to this comment">April 25, 2012 at 1:03 am</a></span></div>
-                                                    <p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                                    <a class='comment-reply-link' href='#'><i class="icon-reply"></i></a>
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="comment byuser comment-author-_smcl_admin even thread-odd thread-alt depth-1" id="li-comment-2">
-                                    <div id="comment-2" class="comment-wrap clearfix">
-                                        <div class="comment-meta">
-                                            <div class="comment-author vcard">
-<span class="comment-avatar clearfix">
-<img alt='' src='http://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' /></span>
-                                            </div>
-                                        </div>
-                                        <div class="comment-content clearfix">
-                                            <div class="comment-author"><a href='http://themeforest.net/user/semicolonweb' rel='external nofollow' class='url'>SemiColon</a><span><a href="#" title="Permalink to this comment">April 25, 2012 at 1:03 am</a></span></div>
-                                            <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                            <a class='comment-reply-link' href='#'><i class="icon-reply"></i></a>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                </li>
                             </ol>
                             <div class="clear"></div>
                         </div>
@@ -571,60 +521,21 @@
     <script>
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('[name="_token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         $(document).ready(function() {
-            $('#comment_form').on('submit', function(event) {
-                event.preventDefault();
-                var form_data = $(this).serialize();
-                $.ajax({
-                    url: "{{ url('comment/store') }}",
-                    method: 'POST',
-                    data: form_data,
-                    dataType: 'JSON',
-                    success: function(data)
-                    {
-                        load_comment();
-                        $('#comment_form')[0].reset();
-                    }
-                })
-            });
-            $('#reply_submit').on('submit', function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: "{{ url('comment/store') }}",
-                    method: 'POST',
-                    data: form_data,
-                    dataType: 'JSON',
-                    success: function(data)
-                    {
-                        load_comment();
-                        $('#reply_form')[0].reset();
-                    }
-                })
-            });
-
-            load_comment();
-            function load_comment()
-            {
+            function load_comment() {
                 var i;
                 var html = '';
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
                 $.ajax({
                     url: "{{ url('comment/fetch') }}",
-                    data:
-                        {
-                            review_id: window.location.pathname.split('/').slice(-1).pop(),
-                        },
+                    data: {
+                        review_id: window.location.pathname.split('/').slice(-1).pop(),
+                    },
                     method: 'POST',
                     dataType: 'JSON',
-                    success: function(data)
-                    {
+                    success: function(data) {
                         //0 = email
                         //1 = created_at
                         //2 = content
@@ -648,27 +559,100 @@
                                 '</div>' +
                                 '<div class="clear"></div>' +
                                 '</div>' +
-                                '<div id="display-reply-' + data[i][3] + '" class="display-none reply">' +
+                                '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
+                                '<div id="display-replies-' + data[i][3] + '" class="reply"></div>' +
                                 '</li>';
                         }
                         $('#display-comment').html(html);
                     }
                 })
             }
+            function load_reply() {
+                var i;
+                var html = '';
+                $.ajax({
+                    url: "{{ url('comment/fetch2') }}",
+                    data: {
+                        review_id: window.location.pathname.split('/').slice(-1).pop(),
+                    },
+                    method: 'POST',
+                    dataType: 'JSON',
+                    success: function(data)
+                    {
+                        //0 = email
+                        //1 = created_at
+                        //2 = content
+                        //3 = comment_id
+                        //4 = avatar
+                        for (i = 0; i < data.length; i++) {
+                            html = '<li id="li-reply-' + data[i][3] + '">' +
+                                '<div id="reply-' + data[i][3] + '" class="comment-wrap clearfix">' +
+                                '<div class="comment-meta">' +
+                                '<div class="comment-author vcard">' +
+                                '<span class="comment-avatar clearfix">' +
+                                '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
+                                '</span>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="comment-content clearfix">' +
+                                '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
+                                '<p>' + data[i][2] + '</p>' +
+                                '</div>' +
+                                '<div class="clear"></div>' +
+                                '</div>' +
+                                // '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
+                                '</li>';
+                            $('#display-replies-' + data[i][5] +'').append(html);
+                        }
+                        console.log(data);
+                    }
+                })
+            }
+            load_comment();
+            load_reply();
 
-            $(document).on('click', '.icon-reply', function (){
+            $(document).on('submit','[id^="reply_form_"]', function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ url('comment/store') }}",
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'JSON',
+                    success: function(data) {
+                        load_comment();
+                        load_reply();
+                        $('[id^="reply_form_"]')[0].reset();
+                    }
+                })
+            });
+
+            $(document).on('submit','#comment_form', function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ url('comment/store') }}",
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'JSON',
+                    success: function(data) {
+                        load_comment();
+                        load_reply();
+                        $('#comment_form')[0].reset();
+                    }
+                })
+            });
+
+            $(document).on('click', '.icon-reply', function () {
                 var id = $(this).attr("id");
                 var review_id = window.location.pathname.split('/').slice(-1).pop();
                 var html = '';
-
                 html += '<div class="container">' +
-                    '    <form method="POST" action="{{ route('comment.add') }}" id="reply_form" class="clearfix">' +
+                    '    <form method="POST" action="{{ route('comment.add') }}" id="reply_form_' + id + '" class="clearfix">' +
                     '@csrf' +
                     '        <div class="form-group">' +
                     '            <input id="reply-content-' + id + '" class="form-control form-control-custom reply-box" autocomplete="off" placeholder="Enter reply" name="content" type="text">' +
                     '            <input id="is_reply_to" name="is_reply_to" type="hidden" value="' + id + '">' +
-                    '            <input name="review_id" type="hidden" value="'+ review_id +'">' +
-                    '            <input name="submit" id="reply_submit" class="btn btn-info display-none" type="submit" value="Reply">' +
+                    '            <input id="review_id" name="review_id" type="hidden" value="'+ review_id +'">' +
+                    '            <input name="submit" id="submit" class="btn btn-info display-none" type="submit" value="Submit"' +
                     '        </div>' +
                     '    </form>' +
                     '</div>';
@@ -678,4 +662,3 @@
         });
     </script>
 @endsection
-
