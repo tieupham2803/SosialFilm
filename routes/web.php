@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PagesController@welcome');
+Route::get('/loadMore', 'PagesController@ajaxLoadMore');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('profile', 'ProfileController');

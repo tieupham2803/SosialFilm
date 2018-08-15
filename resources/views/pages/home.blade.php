@@ -5,318 +5,174 @@
         <div class="content-wrap">
             <div class="container clearfix">
                 <div class="heading-block center">
-                    <h1>Hot Films</h1>
-                    <span>We almost blog regularly about this &amp; that.</span>
+                    <h1>{{ __('Hot Films') }}</h1>
+                    <span>{{ __('Caption') }}</span>
                 </div>
-                <div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">
-                    {{--Hot Films--}}
-                    <div class="entry clearfix">
-                        <div class="entry-image">
-                            <a href="https://s3img.vcdn.vn/123phim/2018/07/toa-thap-choc-troi-skyscraper-15311128722018.jpg" data-lightbox="image"><img class="image_fade" src="https://s3img.vcdn.vn/123phim/2018/07/toa-thap-choc-troi-skyscraper-15311128722018.jpg" alt="Standard Post with Image"></a>
-                        </div>
-                        <div class="entry-title">
-                            <h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-                            <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-                            <li><a href="#"><i class="icon-like"></i> 13</a></li>
-                        </ul>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-                            <a href="blog-single.html" class="more-link">Review This Film Now</a>
-                        </div>
+                @if (count($arrMovies)<6)
+                    <div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">
+                        {{--Hot Films--}}
+                        @foreach ($movies as $movie)
+                            <div class="entry clearfix">
+                                <div class="entry-image">
+                                    <a href="{{ $movie->poster }}" data-lightbox="image"><img class="image_fade" src="{{ $movie->poster }}" alt="Standard Post with Image"></a>
+                                </div>
+                                <div class="entry-title">
+                                    <h2><a href="#">{{ $movie->title }}</a></h2>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    <li><i class="icon-calendar3"></i> {{ $movie->realease_date }}</li>
+                                </ul>
+                                <div class="entry-content">
+                                    <p>{{ $movie->overview }}</p>
+                                    <a href="#" class="more-link">{{ __('Review This Film Now') }}</a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="entry clearfix">
-                        <div class="entry-image">
-                            <a href="https://s3img.vcdn.vn/123phim/2018/07/nhiem-vu-bat-kha-thi-sup-do-mission-impossible-fallout-15323182433064.jpg" data-lightbox="image"><img class="image_fade" src="https://s3img.vcdn.vn/123phim/2018/07/nhiem-vu-bat-kha-thi-sup-do-mission-impossible-fallout-15323182433064.jpg" alt="Standard Post with Image"></a>
+                @else
+                    <div id="carouselExampleIndicators" class="carousel slide margin-bottom-100" data-ride="carousel">
+                        <div class="carousel-inner">
+                            @for ($i = 0; $i < count($arrMovies); $i++)
+                                @if ($i == 0)
+                                    <div class="carousel-item active">
+                                        <div class="row">
+                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i+1]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i+2]['poster'] }}" alt="Second slide"></a></div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i+1]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i+2]['poster'] }}" alt="Second slide"></a></div>
+                                        </div>
+                                    </div>
+                                @endif
+                                <?php $i += 2 ?>
+                            @endfor
                         </div>
-                        <div class="entry-title">
-                            <h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-                            <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-                            <li><a href="#"><i class="icon-like"></i> 13</a></li>
-                        </ul>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-                            <a href="blog-single.html" class="more-link">Review This Film Now</a>
-                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
-                    <div class="entry clearfix">
-                        <div class="entry-image">
-                            <a href="https://s3img.vcdn.vn/123phim/2018/07/bi-mat-nha-ma-buyer-beware-15318962713039.jpg" data-lightbox="image"><img class="image_fade" src="https://s3img.vcdn.vn/123phim/2018/07/bi-mat-nha-ma-buyer-beware-15318962713039.jpg" alt="Standard Post with Image"></a>
-                        </div>
-                        <div class="entry-title">
-                            <h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-                            <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-                            <li><a href="#"><i class="icon-like"></i> 13</a></li>
-                        </ul>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-                            <a href="blog-single.html" class="more-link">Review This Film Now</a>
-                        </div>
-                    </div>
-                </div>
+                @endif
+
                 <div class="heading-block center">
-                    <h1>Hot Reviews</h1>
-                    <span>We almost blog regularly about this &amp; that.</span>
+                    <h1>{{ __('Hot Reviews') }}</h1>
+                    <span>{{ __('Caption') }}</span>
                 </div>
                 <div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">
                     {{--Hot Reviews--}}
-                    <div class="entry clearfix">
-                        <div class="entry-image">
-                            <a href="https://s3img.vcdn.vn/123phim/2018/07/toa-thap-choc-troi-skyscraper-15311128722018.jpg" data-lightbox="image"><img class="image_fade" src="https://s3img.vcdn.vn/123phim/2018/07/toa-thap-choc-troi-skyscraper-15311128722018.jpg" alt="Standard Post with Image"></a>
+                    @foreach ($reviews as $review)
+                        <div class="entry clearfix">
+                            <div class="entry-image">
+                                <a href="{{ $review->poster }}" data-lightbox="image"><img class="image_fade" src="{{ $review->poster }}" alt="Standard Post with Image"></a>
+                            </div>
+                            <div class="entry-title">
+                                <h2><a href="{!! route('reviews.show', 1) !!}">{{ $review->title }}</a></h2>
+                            </div>
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> {{ $review->created_at }}</li>
+                                <li><a href="#"><i class="icon-comments"></i> 13</a></li>
+                                <li><a href="#"><i class="icon-like"></i> {{ $review->like }}</a></li>
+                            </ul>
+                            <div class="entry-content">
+                                <p>{!! $review->content !!}</p>
+                                <a href="{{ route('reviews.show', $review->id) }}" class="more-link">{{ __('Read More') }}</a>
+                            </div>
                         </div>
-                        <div class="entry-title">
-                            <h2><a href="{!! route('reviews.show', 1) !!}">This is a Standard post with a Preview Image</a></h2>
+                    @endforeach
+
+                    @foreach ($sortReviews as $review)
+                        <div class="entry clearfix">
+                            <div class="entry-image">
+                                <a href="{{ $review['poster'] }}" data-lightbox="image"><img class="image_fade" src="{{ $review['poster'] }}" alt="Standard Post with Image"></a>
+                            </div>
+                            <div class="entry-title">
+                                <h2><a href="{!! route('reviews.show', 1) !!}">{{ $review['title'] }}</a></h2>
+                            </div>
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> {{ $review['created_at'] }}</li>
+                                <li><a href="#"><i class="icon-comments"></i> 13</a></li>
+                                <li><a href="#"><i class="icon-like"></i> {{ $review['like'] }}</a></li>
+                            </ul>
+                            <div class="entry-content">
+                                <p>{!! $review['content'] !!}</p>
+                                <a href="{{ route('reviews.show', $review['id']) }}" class="more-link">{{ __('Read More') }}</a>
+                            </div>
                         </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-                            <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-                            <li><a href="#"><i class="icon-like"></i> 13</a></li>
-                        </ul>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-                            <a href="blog-single.html" class="more-link">Read More</a>
-                        </div>
-                    </div>
-                    <div class="entry clearfix">
-                        <div class="entry-image">
-                            <a href="https://s3img.vcdn.vn/123phim/2018/07/nhiem-vu-bat-kha-thi-sup-do-mission-impossible-fallout-15323182433064.jpg" data-lightbox="image"><img class="image_fade" src="https://s3img.vcdn.vn/123phim/2018/07/nhiem-vu-bat-kha-thi-sup-do-mission-impossible-fallout-15323182433064.jpg" alt="Standard Post with Image"></a>
-                        </div>
-                        <div class="entry-title">
-                            <h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-                            <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-                            <li><a href="#"><i class="icon-like"></i> 13</a></li>
-                        </ul>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-                            <a href="blog-single.html" class="more-link">Read More</a>
-                        </div>
-                    </div>
-                    <div class="entry clearfix">
-                        <div class="entry-image">
-                            <a href="https://s3img.vcdn.vn/123phim/2018/07/bi-mat-nha-ma-buyer-beware-15318962713039.jpg" data-lightbox="image"><img class="image_fade" src="https://s3img.vcdn.vn/123phim/2018/07/bi-mat-nha-ma-buyer-beware-15318962713039.jpg" alt="Standard Post with Image"></a>
-                        </div>
-                        <div class="entry-title">
-                            <h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-                            <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-                            <li><a href="#"><i class="icon-like"></i> 13</a></li>
-                        </ul>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-                            <a href="blog-single.html" class="more-link">Read More</a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+
+                {{--Load more with scroll--}}
+                <div id="loadMore"></div>
             </div>
+        </div>
         </div>
     </section>
 
-    <footer id="footer" class="dark">
-        <div class="container">
-
-            <div class="footer-widgets-wrap clearfix">
-                <div class="col_two_third">
-                    <div class="col_one_third">
-                        <div class="widget clearfix">
-                            <img src="images/footer-widget-logo.png" alt="" class="footer-logo">
-                            <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp;
-                                <strong>Flexible</strong> Design Standards.</p>
-                            <div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
-                                <address>
-                                    <strong>Headquarters:</strong><br>
-                                    795 Folsom Ave, Suite 600<br>
-                                    San Francisco, CA 94107<br>
-                                </address>
-                                <abbr title="Phone Number"><strong>Phone:</strong></abbr> (91) 8547 632521<br>
-                                <abbr title="Fax"><strong>Fax:</strong></abbr> (91) 11 4752 1433<br>
-                                <abbr title="Email Address"><strong>Email:</strong></abbr> <span class="__cf_email__"
-                                                                                                 data-cfemail="a6cfc8c0c9e6c5c7c8d0c7d588c5c9cb">[email&#160;protected]</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col_one_third">
-                        <div class="widget widget_links clearfix">
-                            <h4>Blogroll</h4>
-                            <ul>
-                                <li><a href="http://codex.wordpress.org/">Documentation</a></li>
-                                <li><a href="http://wordpress.org/support/forum/requests-and-feedback">Feedback</a></li>
-                                <li><a href="http://wordpress.org/extend/plugins/">Plugins</a></li>
-                                <li><a href="http://wordpress.org/support/">Support Forums</a></li>
-                                <li><a href="http://wordpress.org/extend/themes/">Themes</a></li>
-                                <li><a href="http://wordpress.org/news/">WordPress Blog</a></li>
-                                <li><a href="http://planet.wordpress.org/">WordPress Planet</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col_one_third col_last">
-                        <div class="widget clearfix">
-                            <h4>Recent Posts</h4>
-                            <div id="post-list-footer">
-                                <div class="spost clearfix">
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
-                                        </div>
-                                        <ul class="entry-meta">
-                                            <li>10th July 2014</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="spost clearfix">
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-                                        </div>
-                                        <ul class="entry-meta">
-                                            <li>10th July 2014</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="spost clearfix">
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-                                        </div>
-                                        <ul class="entry-meta">
-                                            <li>10th July 2014</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col_one_third col_last">
-                    <div class="widget clearfix" style="margin-bottom: -20px;">
-                        <div class="row">
-                            <div class="col-lg-6 bottommargin-sm">
-                                <div class="counter counter-small"><span data-from="50" data-to="15065421"
-                                                                         data-refresh-interval="80" data-speed="3000"
-                                                                         data-comma="true"></span></div>
-                                <h5 class="nobottommargin">Total Downloads</h5>
-                            </div>
-                            <div class="col-lg-6 bottommargin-sm">
-                                <div class="counter counter-small"><span data-from="100" data-to="18465"
-                                                                         data-refresh-interval="50" data-speed="2000"
-                                                                         data-comma="true"></span></div>
-                                <h5 class="nobottommargin">Clients</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="widget subscribe-widget clearfix">
-                        <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp;
-                            Inside Scoops:</h5>
-                        <div class="widget-subscribe-form-result"></div>
-                        <form id="widget-subscribe-form"
-                              action="http://themes.semicolonweb.com/html/canvas/include/subscribe.php" role="form"
-                              method="post" class="nobottommargin">
-                            <div class="input-group divcenter">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><i class="icon-email2"></i></div>
-                                </div>
-                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email"
-                                       class="form-control required email" placeholder="Enter your Email">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success" type="submit">Subscribe</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="widget clearfix" style="margin-bottom: -20px;">
-                        <div class="row">
-                            <div class="col-lg-6 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin"
-                                   style="margin-right: 10px;">
-                                    <i class="icon-facebook"></i>
-                                    <i class="icon-facebook"></i>
-                                </a>
-                                <a href="#">
-                                    <small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on
-                                        Facebook
-                                    </small>
-                                </a>
-                            </div>
-                            <div class="col-lg-6 clearfix">
-                                <a href="#" class="social-icon si-dark si-colored si-rss nobottommargin"
-                                   style="margin-right: 10px;">
-                                    <i class="icon-rss"></i>
-                                    <i class="icon-rss"></i>
-                                </a>
-                                <a href="#">
-                                    <small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS
-                                        Feeds
-                                    </small>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="copyrights">
-            <div class="container clearfix">
-                <div class="col_half">
-                    Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br>
-                    <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
-                </div>
-                <div class="col_half col_last tright">
-                    <div class="fright clearfix">
-                        <a href="#" class="social-icon si-small si-borderless si-facebook">
-                            <i class="icon-facebook"></i>
-                            <i class="icon-facebook"></i>
-                        </a>
-                        <a href="#" class="social-icon si-small si-borderless si-twitter">
-                            <i class="icon-twitter"></i>
-                            <i class="icon-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon si-small si-borderless si-gplus">
-                            <i class="icon-gplus"></i>
-                            <i class="icon-gplus"></i>
-                        </a>
-                        <a href="#" class="social-icon si-small si-borderless si-pinterest">
-                            <i class="icon-pinterest"></i>
-                            <i class="icon-pinterest"></i>
-                        </a>
-                        <a href="#" class="social-icon si-small si-borderless si-vimeo">
-                            <i class="icon-vimeo"></i>
-                            <i class="icon-vimeo"></i>
-                        </a>
-                        <a href="#" class="social-icon si-small si-borderless si-github">
-                            <i class="icon-github"></i>
-                            <i class="icon-github"></i>
-                        </a>
-                        <a href="#" class="social-icon si-small si-borderless si-yahoo">
-                            <i class="icon-yahoo"></i>
-                            <i class="icon-yahoo"></i>
-                        </a>
-                        <a href="#" class="social-icon si-small si-borderless si-linkedin">
-                            <i class="icon-linkedin"></i>
-                            <i class="icon-linkedin"></i>
-                        </a>
-                    </div>
-                    <div class="clear"></div>
-                    <i class="icon-envelope2"></i> <span class="__cf_email__"
-                                                         data-cfemail="3c55525a537c5f5d524a5d4f125f5351">[email&#160;protected]</span>
-                    <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-11-6541-6369 <span
-                            class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <div id="gotoTop" class="icon-angle-up"></div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        var is_busy = false;
+        var page = 0;
+        var stopped = false;
+        $(document).ready(function()
+        {
+            $(window).scroll(function()
+            {
+                if($(window).scrollTop() == $(document).height() - $(window).height())
+                {
+                    if (is_busy == true){
+                        return false;
+                    }
+                    if (stopped == true){
+                        return false;
+                    }
+                    is_busy = true;
+                    page++;
+                    $.ajax(
+                        {
+                            type: 'get',
+                            url: '/loadMore',
+                            data: {page : page},
+                            success : function (result)
+                            {
+                                console.log(result);
+                                var htmlResult = '<div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">';
+                                result.forEach(function (item) {
+                                    htmlResult += '<div class="entry clearfix">';
+                                    htmlResult += '<div class="entry-image"><a href="' + item['poster'] + '" data-lightbox="image">';
+                                    htmlResult += '<img class="image_fade" src="' + item['poster'] + '" alt="Standard Post with Image"></a></div>';
+                                    htmlResult += '<div class="entry-title"><h2><a href="#">' + item['title'] + '</a></h2></div>';
+                                    htmlResult += '<ul class="entry-meta clearfix">';
+                                    htmlResult += '<li><i class="icon-calendar3"></i>' + item['created_at'] + '</li>';
+                                    htmlResult += '<li><a href="#"><i class="icon-comments"></i> 13</a></li>';
+                                    htmlResult += '<li><a href="#"><i class="icon-like"></i>' + item['like'] + '</a></li></ul>';
+                                    htmlResult += '<div class="entry-content"><p>' + item['content'] + '</p>';
+                                    htmlResult += '<a href="/reviews/' + item['id'] + '" class="more-link">{{ __('Read More') }}</a></div>';
+                                    htmlResult += '</div>';
+                                });
+                                htmlResult += '</div>';
+                                $('#loadMore').append(htmlResult);
+                            }
+                        })
+                        .always(function()
+                        {
+                            is_busy = false;
+                        });
+                    return false;
+                }
+            });
+        });
+    </script>
 @endsection
