@@ -54,6 +54,9 @@
                                 {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                                 {{ Form::close() }}
                             </td>
+                            <td>
+                                <a href="{{ action('ReviewsController@show', $cal->id) }}" class="btn btn-info btn-sm">{{ trans('message.detail') }}</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

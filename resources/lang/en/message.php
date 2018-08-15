@@ -54,5 +54,7 @@ return [
     'movie' => 'Movie',
     'content' => 'Content',
     'author' => 'Author',
-    'reviews' => 'Reviews'
+    'reviews' => 'Reviews',
+    'detail' => 'Detail',
+    'search' => 'Search...',
 ];

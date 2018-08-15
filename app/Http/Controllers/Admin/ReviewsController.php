@@ -97,4 +97,11 @@ class ReviewsController extends Controller
 
         return redirect('/admin/reviews')->with('success', trans('message.success-delete'));
     }
+
+    public function searchByName(Request $request)
+    {
+        $reviews  = Review::where('title', 'like', '%' . $request->value . '%')->get();
+
+        return response()->json($reviews);
+    }
 }

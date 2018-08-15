@@ -26,12 +26,12 @@
                             <div class="entry clearfix">
                                 <div class="entry-image">
                                     <a href="#">
-                                        <img src="{{ asset($review->poster) }}" alt="Inventore voluptates velit totam ipsa tenetur">
+                                        <img src="" alt="Inventore voluptates velit totam ipsa tenetur">
                                     </a>
                                 </div>
                                 <div class="entry-c">
                                     <div class="entry-title">
-                                        <h2><a href="#">{{ $review->title }}</a></h2>
+                                        <h2><a href="{{ route('reviews.show', $review->id) }}">{{ $review->title }}</a></h2>
                                     </div>
                                     <ul class="entry-meta clearfix">
                                         <li><span class="badge badge-warning">{{ trans('message.public') }}</span></li>
