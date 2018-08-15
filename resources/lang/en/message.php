@@ -55,6 +55,7 @@ return [
     'content' => 'Content',
     'author' => 'Author',
     'reviews' => 'Reviews',
+    'releasedate' => 'Release date',
     'detail' => 'Detail',
     'search' => 'Search...',
 ];
