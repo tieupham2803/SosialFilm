@@ -47,3 +47,4 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@
 Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login.facebook');
 Route::get('login/facebook/callback', 'Auth\LoginController@getFacebookCallback');
 Route::get('/like/{id}', 'ReviewsController@like')->name('like');
+Route::resource('moviedetails', 'MovieDetailController');

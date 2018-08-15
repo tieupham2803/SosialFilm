@@ -54,5 +54,6 @@ return [
     'movie' => 'Movie',
     'content' => 'Content',
     'author' => 'Author',
-    'reviews' => 'Reviews'
+    'reviews' => 'Reviews',
+    'releasedate' => 'Release date',
 ];
