@@ -1,3 +1,18 @@
 .display-comment .display-comment {
     margin-left: 40px
 }
+
+.display-none {
+    display: none;
+}
+
+.reply-box {
+    margin-top: 25px;
+}
+
+.form-control-custom {
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+
+    border-radius: 50px;
+}
