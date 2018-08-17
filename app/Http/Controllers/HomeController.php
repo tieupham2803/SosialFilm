@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('pages.home');
+        return redirect('/');
     }
 
     public function changeLanguage($language)

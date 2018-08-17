@@ -70,7 +70,6 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        //
         try {
             $genre = Genre::findOrFail($id);
 
