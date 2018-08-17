@@ -92,4 +92,12 @@ class MovieDetailController extends Controller
     {
         //
     }
+
+    public function searchByName(Request $request)
+    {
+        $students = Movie::where('title', 'like', '%' . $request->value . '%')->get();
+
+        return response()->json($students);
+    }
+
 }
