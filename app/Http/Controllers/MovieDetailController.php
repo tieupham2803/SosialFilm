@@ -7,6 +7,7 @@ use App\Movie;
 use App\GenreMovie;
 use App\ActorMovie;
 use App\Country;
+use App\Review;
 use DB;
 
 class MovieDetailController extends Controller
@@ -54,8 +55,11 @@ class MovieDetailController extends Controller
         $movies = Movie::findOrFail($id);
         $genres = DB::table('genre_movie')->where('movie_id', '=', $id)->join('genres', 'genre_id', '=','genres.id')->select('genres.name')->get();
         $actors = DB::table('actor_movie')->where('movie_id', '=', $id)->join('actors', 'actor_id', '=','actors.id')->select('actors.name', 'actors.avarta')->get();
+        $reviews = DB::table('reviews')->where('movie_id', '=', $id)->select('id', 'title', 'created_at','content')->get();
 
-        return view('moviedetails.show', compact('movies', 'genres', 'actors'));
+        // var_dump($reviews);
+        // exit();
+        return view('moviedetails.show', compact('movies', 'genres', 'actors', 'reviews'));
 
     }
 

@@ -17,7 +17,7 @@ class ReviewsController extends Controller
     {
         $loggedin_user = Auth::user()->id;
         $review_movie = DB::table('reviews')->join('movies', 'reviews.movie_id', '=', 'movies.id')
-        ->select('reviews.*', 'movies.poster', 'movies.title AS moviesTitle')->where('reviews.user_id', '=', $loggedin_user);
+        ->select('reviews.*', 'movies.poster as poster', 'movies.title AS moviesTitle')->where('reviews.user_id', '=', $loggedin_user);
         $reviews =  $review_movie->paginate(config('view.pagination-num-item-in-page'));
 
         return view('reviews.index', compact('reviews'));

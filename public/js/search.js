@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
                     '<h4>Movies</h4><div class="list-group search-results-dropdown"></div>'
                 ],
                 suggestion: function (data) {
-                    return '<a href="/movies/' + data.id + '" class="list-group-item list-group-item-info">' + data.title + '</a>';
+                    return '<a href="/moviedetails/' + data.id + '" class="list-group-item list-group-item-info">' + data.title + '</a>';
                 }
             }
         },
