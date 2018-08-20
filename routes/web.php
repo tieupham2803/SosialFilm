@@ -19,6 +19,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('reviews', 'ReviewsController', ['except' => ['show']]);
     Route::post('comment/store', 'CommentsController@store')->name('comment.add');
     Route::post('reply/store', 'CommentsController@replyStore')->name('reply.add');
+    Route::post('notification/fetch_noti_count', 'NotificationsController@fetch_noti_count')
+        ->name('notification.fetch_noti_count');
+    Route::post('notification/fetch_noti_list', 'NotificationsController@fetch_noti_list')
+        ->name('notification.fetch_noti_list');
 });
 Route::get('reviews/{review}', 'ReviewsController@show')->name('reviews.show');
 Route::post('comment/fetch', 'CommentsController@fetch')->name('comment.fetch');
