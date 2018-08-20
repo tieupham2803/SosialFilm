@@ -72,9 +72,27 @@
                         <div id="logo" class="nav-avatar">
                             <img src="{{ Auth::user()->avatar }}" class="img-circle img-avatar">
                         </div>
-                    @endguest
+                    {{--@endguest--}}
                 </ul>
 
+                <div id="top-cart">
+                    <a href="#" id="top-cart-trigger"><i class="fas fa-bell"></i><span id="noti-count"></span></a>
+                    <div class="top-cart-content">
+                        <div class="top-cart-items">
+                            <ul id="noti-list" class="headerNotify_content">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="top-search">
+                    <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+                    {!! Form::open() !!}
+                    <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+                    {!! Form::close() !!}
+                </div>
+                @endguest
             </nav>
         </div>
     </div>
