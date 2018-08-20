@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Movie;
 use App\GenreMovie;
 use App\ActorMovie;
+use App\Genre;
+use App\Actor;
 use App\Country;
 use App\Review;
 use DB;
+use App\Repositories\Movie\MovieRepositoryInterface;
 
 class MovieDetailController extends Controller
 {
@@ -17,9 +20,15 @@ class MovieDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
+        //
+        $movies = Movie::paginate(config('view.pagination-num-item-in-page'));
+        $genres = Genre::pluck('name', 'id');
+
+        return view('filter', compact('movies', 'genres'));
     }
 
     /**
@@ -104,4 +113,16 @@ class MovieDetailController extends Controller
         return response()->json($students);
     }
 
+    // public function search(Request $request)
+    // {
+
+    //     $genres = Genre::pluck('name', 'id');
+    //     $genre_id = $request->get('genre_id');
+
+
+    //     $genre_movies = DB::table('genre_movie')->where('genre_id', '=', $genre_id)->join('movies', 'movie_id', '=','movies.id')->select('movies.*');
+    //     $movies =  $genre_movies->paginate(config('view.pagination-num-item-in-page'));
+
+    //     return view('filter', compact('movies', 'genres'));
+    // }
 }

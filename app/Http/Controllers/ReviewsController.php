@@ -29,6 +29,12 @@ class ReviewsController extends Controller
 
         return view('reviews.create', compact('movies'));
     }
+    public function createID($id)
+    {
+        $movies = Movie::find($id);
+
+        return view('reviews.createId', compact('movies'));
+    }
 
     public function store(ReviewFormRequest $request)
     {

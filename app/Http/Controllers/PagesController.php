@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\GenreMovie;
+use App\ActorMovie;
+use App\Genre;
 use App\Like;
 use App\Movie;
 use App\Review;
@@ -43,8 +46,11 @@ class PagesController extends Controller
 
             return $item1['like'] < $item2['like'] ? 1 : -1;
         });
-
-        return view('pages.home', compact('arrMovies', 'reviews', 'sortReviews', 'movies'));
+        // $x =1;
+        $genres = Genre::pluck('name', 'id');
+// var_dump($genre);
+// exit();
+        return view('pages.home', compact('arrMovies', 'reviews', 'sortReviews', 'movies', 'genres'));
     }
 
     public function ajaxLoadMore(Request $request)
@@ -67,4 +73,5 @@ class PagesController extends Controller
 
         return $arr;
     }
+
 }

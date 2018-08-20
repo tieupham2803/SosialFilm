@@ -95,5 +95,31 @@
                 @endguest
             </nav>
         </div>
-    </div>
+<div class="row justify-content-center">
+        <div class="container">
+        {!! Form::open(['route' => 'moviefilter.search', 'id' => 'form-search']) !!}
+            <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            {!! Form::label( trans('message.selectgenre')) !!}
+                            {!! Form::select('genre_id',App\Genre::getGenre(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            {!! Form::label( trans('message.selectgenre')) !!}
+                            {!! Form::select('country_id',App\Country::getCountry(), null, [ 'class' => 'select2 sm-form-control fix-select',  'size' => '5']) !!}
+                        </div>
+                    </div>
+            <div class="col-sm">
+                      <div class="form-group">
+                        <br>
+                        {!! Form::submit(trans('message.search'), ['class' => 'btn btn-primary btn-search']) !!}
+                        {!! Form::close() !!}
+                </div>
+                </div>
+              </div>
+            </div>
+        </div>
+</div>
 </header>

@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('notification.fetch_noti_count');
     Route::post('notification/fetch_noti_list', 'NotificationsController@fetch_noti_list')
         ->name('notification.fetch_noti_list');
+    Route::get('reviews/createId/{id}', 'ReviewsController@createId')->name('reviews.createId');
 });
 Route::get('reviews/{review}', 'ReviewsController@show')->name('reviews.show');
 Route::post('comment/fetch', 'CommentsController@fetch')->name('comment.fetch');
@@ -60,3 +61,5 @@ Route::get('/like/{id}', 'ReviewsController@like')->name('like');
 Route::resource('moviedetails', 'MovieDetailController');
 Route::get('/search/name', 'ReviewsController@searchByName');
 Route::get('/search/movie', 'MovieDetailController@searchByName');
+// Route::post('moviedetails/search', 'MoviedetailController@search')->name('moviedetails.search');
+Route::post('moviefilter/search', 'MovieFilterController@search')->name('moviefilter.search');

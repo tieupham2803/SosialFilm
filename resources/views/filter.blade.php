@@ -3,8 +3,9 @@
 @section('content')
 <br>
 <div class="container">
+
         <div class="col-md-12">
-{{-- {{$x}} --}}
+
 
                 <div class="card-body">
                     @if (session('status'))
@@ -50,4 +51,5 @@
     {{-- <script src="http://sosialfilm.test/bower_components/select2/dist/js/select2.min.js"></script> --}}
 
 @endsection
+
 

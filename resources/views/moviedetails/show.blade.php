@@ -61,6 +61,9 @@
                                 <iframe width="420" height="315" src="{{$movies->trailer}}" frameborder="0" allowfullscreen></iframe>
 
                             </div>
+                                {!! Form::open(['route' => ['reviews.createId', $movies->id], 'method' => 'get', 'class' => 'detail']) !!}
+                                    {!! Form::submit(trans('message.createmovie'), ['class' => 'btn btn-primary btn-detail']) !!}
+                                {!! Form::close() !!}
                             <div class="clear"></div>
 
                             <div class="si-share noborder clearfix">
