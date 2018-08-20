@@ -518,96 +518,114 @@
 @endsection
 
 @section('script')
-    <script>
+    <script type="text/javascript">
+        function load_comment() {
+            var i;
+            var html = '';
+            $.ajax({
+                url: "{{ url('comment/fetch') }}",
+                data: {
+                    review_id: window.location.pathname.split('/').slice(-1).pop(),
+                },
+                method: 'POST',
+                dataType: 'JSON',
+                success: function(data) {
+                    //0 = email
+                    //1 = created_at
+                    //2 = content
+                    //3 = comment_id
+                    //4 = avatar
+                    console.log(data);
+                    $('#comments-title').html('<span>'+ data.length + '</span> Comments');
+                    for (i = 0; i < data.length; i++) {
+                        html += '<li id="li-comment-' + data[i][3] + '">' +
+                            '<div id="comment-' + data[i][3] + '" class="comment-wrap clearfix">' +
+                            '<div class="comment-meta">' +
+                            '<div class="comment-author vcard">' +
+                            '<span class="comment-avatar clearfix">' +
+                            '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
+                            '</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="comment-content clearfix">' +
+                            '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
+                            '<p>' + data[i][2] + '</p>' +
+                            '<a class="comment-reply-link"><i id="' + data[i][3] + '" class="icon-reply"></i></a>' +
+                            '</div>' +
+                            '<div class="clear"></div>' +
+                            '</div>' +
+                            '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
+                            '<div id="display-replies-' + data[i][3] + '" class="reply"></div>' +
+                            '</li>';
+                    }
+                    $('#display-comment').html(html);
+                }
+            })
+        }
+        function load_reply() {
+            var i;
+            var html = '';
+            $.ajax({
+                url: "{{ url('comment/fetch2') }}",
+                data: {
+                    review_id: window.location.pathname.split('/').slice(-1).pop(),
+                },
+                method: 'POST',
+                dataType: 'JSON',
+                success: function(data)
+                {
+                    //0 = email
+                    //1 = created_at
+                    //2 = content
+                    //3 = comment_id
+                    //4 = avatar
+                    for (i = 0; i < data.length; i++) {
+                        html = '<li id="li-reply-' + data[i][3] + '">' +
+                            '<div id="reply-' + data[i][3] + '" class="comment-wrap clearfix">' +
+                            '<div class="comment-meta">' +
+                            '<div class="comment-author vcard">' +
+                            '<span class="comment-avatar clearfix">' +
+                            '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
+                            '</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="comment-content clearfix">' +
+                            '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
+                            '<p>' + data[i][2] + '</p>' +
+                            '</div>' +
+                            '<div class="clear"></div>' +
+                            '</div>' +
+                            // '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
+                            '</li>';
+                        $('#display-replies-' + data[i][5] +'').append(html);
+                    }
+                    // console.log(data);
+                }
+            })
+        }
+
+        Pusher.logToConsole = true;
+        //▼Begin pusher for comment
+        var commented_pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+            encrypted: true,
+            cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
+        });
+
+        var channel = commented_pusher.subscribe('commented');
+
+        channel.bind('App\\Events\\Commented', function(data) {
+            // console.log(data);
+            load_comment();
+            load_reply();
+        });
+        //▲End pusher for comment
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         $(document).ready(function() {
-            function load_comment() {
-                var i;
-                var html = '';
-                $.ajax({
-                    url: "{{ url('comment/fetch') }}",
-                    data: {
-                        review_id: window.location.pathname.split('/').slice(-1).pop(),
-                    },
-                    method: 'POST',
-                    dataType: 'JSON',
-                    success: function(data) {
-                        //0 = email
-                        //1 = created_at
-                        //2 = content
-                        //3 = comment_id
-                        //4 = avatar
-                        $('#comments-title').html('<span>'+ data.length + '</span> Comments');
-                        for (i = 0; i < data.length; i++) {
-                            html += '<li id="li-comment-' + data[i][3] + '">' +
-                                '<div id="comment-' + data[i][3] + '" class="comment-wrap clearfix">' +
-                                '<div class="comment-meta">' +
-                                '<div class="comment-author vcard">' +
-                                '<span class="comment-avatar clearfix">' +
-                                '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
-                                '</span>' +
-                                '</div>' +
-                                '</div>' +
-                                '<div class="comment-content clearfix">' +
-                                '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
-                                '<p>' + data[i][2] + '</p>' +
-                                '<a class="comment-reply-link"><i id="' + data[i][3] + '" class="icon-reply"></i></a>' +
-                                '</div>' +
-                                '<div class="clear"></div>' +
-                                '</div>' +
-                                '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
-                                '<div id="display-replies-' + data[i][3] + '" class="reply"></div>' +
-                                '</li>';
-                        }
-                        $('#display-comment').html(html);
-                    }
-                })
-            }
-            function load_reply() {
-                var i;
-                var html = '';
-                $.ajax({
-                    url: "{{ url('comment/fetch2') }}",
-                    data: {
-                        review_id: window.location.pathname.split('/').slice(-1).pop(),
-                    },
-                    method: 'POST',
-                    dataType: 'JSON',
-                    success: function(data)
-                    {
-                        //0 = email
-                        //1 = created_at
-                        //2 = content
-                        //3 = comment_id
-                        //4 = avatar
-                        for (i = 0; i < data.length; i++) {
-                            html = '<li id="li-reply-' + data[i][3] + '">' +
-                                '<div id="reply-' + data[i][3] + '" class="comment-wrap clearfix">' +
-                                '<div class="comment-meta">' +
-                                '<div class="comment-author vcard">' +
-                                '<span class="comment-avatar clearfix">' +
-                                '<img alt=\'\' src=\'' + data[i][4] + '\' class=\'avatar avatar-60 photo\' height=\'60\' width=\'60\' />' +
-                                '</span>' +
-                                '</div>' +
-                                '</div>' +
-                                '<div class="comment-content clearfix">' +
-                                '<div class="comment-author"><a>' + data[i][0] + '</a><span><a>' + data[i][1] + '</a></span></div>' +
-                                '<p>' + data[i][2] + '</p>' +
-                                '</div>' +
-                                '<div class="clear"></div>' +
-                                '</div>' +
-                                // '<div id="display-reply-' + data[i][3] + '" class="display-none reply"></div>' +
-                                '</li>';
-                            $('#display-replies-' + data[i][5] +'').append(html);
-                        }
-                        console.log(data);
-                    }
-                })
-            }
             load_comment();
             load_reply();
 
