@@ -9,4 +9,9 @@ class Genre extends Model
     //
     public $timestamps = false;
     protected $fillable = ['name'];
+
+    public static function scopegetGenre()
+    {
+    return Genre::pluck('name', 'id');
+    }
 }

@@ -40,7 +40,7 @@ return [
     'runtime' => 'RUntime',
     'trailer' => 'Trailer',
     'imdb_score' => 'Imdb score',
-    'realease_date' => 'Realease date',
+    'realease_date' => 'Release date',
     'movie_name' => 'Movie name',
     'error' => 'Error!!!',
     'movies' => 'Movies',
@@ -58,4 +58,7 @@ return [
     'releasedate' => 'Release date',
     'detail' => 'Detail',
     'search' => 'Search...',
+    'runtime' => 'Runtime:',
+    'minutes' => 'minutes',
+    'createmovie' => 'Create Your Review',
 ];

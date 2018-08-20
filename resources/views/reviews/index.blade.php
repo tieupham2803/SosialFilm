@@ -26,7 +26,7 @@
                             <div class="entry clearfix">
                                 <div class="entry-image">
                                     <a href="#">
-                                        <img src="" alt="Inventore voluptates velit totam ipsa tenetur">
+                                        <img src="{{ $review->poster }}" alt="Inventore voluptates velit totam ipsa tenetur">
                                     </a>
                                 </div>
                                 <div class="entry-c">
