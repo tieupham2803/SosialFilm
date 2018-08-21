@@ -12,6 +12,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
+        "pusher/pusher-php-server": "^3.2",
         "spatie/laravel-permission": "^2.12",
         "unisharp/laravel-filemanager": "^1.9"
     },
