@@ -83,9 +83,11 @@
                                 <li><a href="#"><i class="icon-comments"></i> 13</a></li>
                                 <li><a href="#"><i class="icon-like"></i> {{ $review->like }}</a></li>
                             </ul>
-                            <div class="entry-content">
-                                <p>{!! $review->content !!}</p>
-                                <a href="{{ route('reviews.show', $review->id) }}" class="more-link">{{ __('Read More') }}</a>
+                            <div class="entry-content fixed-height">
+                                <p>
+                                    {!! str_limit(strip_tags($review->content), 400) !!}
+                                    <a href="{{ route('reviews.show', $review->id) }}" class="more-link">{{ __('Read More') }}</a>
+                                </p>
                             </div>
                         </div>
                     @endforeach
@@ -103,9 +105,12 @@
                                 <li><a href="#"><i class="icon-comments"></i> 13</a></li>
                                 <li><a href="#"><i class="icon-like"></i> {{ $review['like'] }}</a></li>
                             </ul>
-                            <div class="entry-content">
-                                <p>{!! $review['content'] !!}</p>
-                                <a href="{{ route('reviews.show', $review['id']) }}" class="more-link">{{ __('Read More') }}</a>
+                            <div class="entry-content fixed-height">
+                                <p>
+                                    {!! str_limit(strip_tags($review['content']), 400) !!}
+                                    <a href="{{ route('reviews.show', $review['id']) }}" class="more-link">{{ __('Read More') }}</a>
+                                </p>
+
                             </div>
                         </div>
                     @endforeach
@@ -123,6 +128,13 @@
 
 @section('script')
     <script type="text/javascript">
+        function str_limit(value) {
+            var str = '';
+            if (value.length > 400) {
+                str = value.substring(0,400);
+            }
+            return str;
+        }
         var is_busy = false;
         var page = 0;
         var stopped = false;
@@ -158,7 +170,7 @@
                                     htmlResult += '<li><i class="icon-calendar3"></i>' + item['created_at'] + '</li>';
                                     htmlResult += '<li><a href="#"><i class="icon-comments"></i> 13</a></li>';
                                     htmlResult += '<li><a href="#"><i class="icon-like"></i>' + item['like'] + '</a></li></ul>';
-                                    htmlResult += '<div class="entry-content"><p>' + item['content'] + '</p>';
+                                    htmlResult += '<div class="entry-content fixed-height"><p>' + str_limit(item['content']) + '</p>';
                                     htmlResult += '<a href="/reviews/' + item['id'] + '" class="more-link">{{ __('Read More') }}</a></div>';
                                     htmlResult += '</div>';
                                 });

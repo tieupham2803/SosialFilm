@@ -21,4 +21,5 @@ yarn-error.log
 composer.lock
 package-lock.json
 bower.lock
+server.php
 
