@@ -109,7 +109,7 @@
                     </div>
 
                     <div class="sidebar nobottommargin col_last clearfix">
-                        <div class="sidebar-widgets-wrap">
+                      {{--   <div class="sidebar-widgets-wrap">
                             <div class="widget widget-twitter-feed clearfix">
                                 <h4>Facebook Feed</h4>
                                 <ul class="iconlist twitter-feed" data-username="envato" data-count="2">
@@ -298,7 +298,7 @@
                                     <a href="#">modern</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

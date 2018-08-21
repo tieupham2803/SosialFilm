@@ -36,17 +36,17 @@
                                 @if ($i == 0)
                                     <div class="carousel-item active">
                                         <div class="row">
-                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i]['poster'] }}" alt="Second slide"></a></div>
-                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i+1]['poster'] }}" alt="Second slide"></a></div>
-                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i+2]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="{{route('moviedetails.show', $arrMovies[$i]['id']) }}"><img class="d-block w-100" src="{{ $arrMovies[$i]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="{{route('moviedetails.show', $arrMovies[$i+1]['id']) }}"><img class="d-block w-100" src="{{ $arrMovies[$i+1]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="{{route('moviedetails.show', $arrMovies[$i+2]['id']) }}"><img class="d-block w-100" src="{{ $arrMovies[$i+2]['poster'] }}" alt="Second slide"></a></div>
                                         </div>
                                     </div>
                                 @else
                                     <div class="carousel-item">
                                         <div class="row">
-                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i]['poster'] }}" alt="Second slide"></a></div>
-                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i+1]['poster'] }}" alt="Second slide"></a></div>
-                                            <div class="col-md-4"><a href="#"><img class="d-block w-100" src="{{ $arrMovies[$i+2]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="{{route('moviedetails.show', $arrMovies[$i]['id']) }}"><img class="d-block w-100" src="{{ $arrMovies[$i]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="{{route('moviedetails.show', $arrMovies[$i+1]['id']) }}"><img class="d-block w-100" src="{{ $arrMovies[$i+1]['poster'] }}" alt="Second slide"></a></div>
+                                            <div class="col-md-4"><a href="{{route('moviedetails.show', $arrMovies[$i+2]['id']) }}"><img class="d-block w-100" src="{{ $arrMovies[$i+2]['poster'] }}" alt="Second slide"></a></div>
                                         </div>
                                     </div>
                                 @endif

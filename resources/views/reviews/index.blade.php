@@ -36,7 +36,7 @@
                                     <ul class="entry-meta clearfix">
                                         <li><span class="badge badge-warning">{{ trans('message.public') }}</span></li>
                                         <li><a href="#"><i class="icon-time"></i>{{ $review->created_at }}</a></li>
-                                        <li><a href="#"><i class="fa fa-film"></i>{{ $review->moviesTitle }}</a></li>
+                                        <li><a href="{{ route('moviedetails.show', $review->movie_id) }}"><i class="fa fa-film"></i>{{ $review->moviesTitle }}</a></li>
                                     </ul>
                                     <div class="entry-content">
                                      <p class="ArticleBody">

@@ -22,7 +22,7 @@
                             <ul class="entry-meta clearfix">
                                 <li><i class="icon-calendar3"></i> {{ $review->created_at }}</li>
                                 <li><a href="#"><i class="icon-user"></i> {{ $username }}</a></li>
-                                <li><i class="fa fa-film"></i> <a href="#">{{ $movie->title }}</a></li>
+                                <li><i class="fa fa-film"></i> <a href="{{ route('moviedetails.show', $movie->id) }}">{{ $movie->title }}</a></li>
                                 <li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>
                                 <li><a href="#"><i class="icon-like"></i> {{ $like }} Likes</a></li>
                             </ul>
